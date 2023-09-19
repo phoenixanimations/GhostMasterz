@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node
+
+func _process(_delta):
+	if(Input.is_action_pressed(\"quit\")):
+		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+"
+
+[node name="Quit" type="Node"]
+script = SubResource( 4 )
