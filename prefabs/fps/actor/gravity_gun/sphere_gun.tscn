@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://prefabs/fps/actor/gravity_gun/gravity_sphere.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/fps/actor/gravity_gun/gravity_gun.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 0.705882, 0.294118, 0.372549, 0.560784 )
+
+[node name="SphereGun" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -16 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 2 )
+
+[node name="Gravity" parent="." instance=ExtResource( 1 )]
