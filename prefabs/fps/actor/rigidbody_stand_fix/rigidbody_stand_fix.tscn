@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://prefabs/fps/actor/rigidbody_stand_fix/rigidbody_stand_fix.gd" type="Script" id=1]
-
-[node name="RigidBodyStandFix" type="Node"]
-script = ExtResource( 1 )
