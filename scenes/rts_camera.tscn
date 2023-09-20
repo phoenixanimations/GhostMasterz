@@ -1,20 +1,43 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://prefabs/garden/garden.tscn" type="PackedScene" id=1]
-[ext_resource path="res://prefabs/fps/controllers/omniscient.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefabs/nancy/nancy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/rts_camera/camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://quit.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Camera
+
+var RAY_LENGTH = 1000.0
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
+		var space_state = get_world().direct_space_state
+		var from = project_ray_origin(event.position)
+		var to = from + project_ray_normal(event.position) * RAY_LENGTH
+		var result = space_state.intersect_ray(from, to)
+		if result:
+			print(result.collider.name)
+			return result.collider
+		return null
+"
 
 [node name="Spatial" type="Spatial"]
 
 [node name="Garden" parent="." instance=ExtResource( 1 )]
 
-[node name="Nancy" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.04143, 0 )
-
-[node name="Omniscient" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39144, 1.86065, 0 )
-run_speed = 12
-walk_speed = 6
-
 [node name="Quit" parent="." instance=ExtResource( 4 )]
+
+[node name="Camera" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16777, 3.96216, 3.54572 )
+edge_scroll/enabled = false
+movement/speed = 0.4
+
+[node name="CameraZoom" parent="Camera/CameraTilt" index="0"]
+script = SubResource( 4 )
+
+[node name="Debug" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+margin_right = 366.0
+margin_bottom = 367.0
+
+[editable path="Camera"]

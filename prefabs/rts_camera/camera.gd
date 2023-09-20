@@ -144,11 +144,11 @@ func _input(event: InputEvent) -> void:
 			_new_tilt_rotation += Vector3.RIGHT * -event.relative.y * deg2rad(looking_speed) * mouse_sensitivity * (2 * int(!option_invert_tilting) - 1)
 			_tilt += -event.relative.y * deg2rad(looking_speed) * mouse_sensitivity * (2 * int(!option_invert_tilting) - 1)
 
-		if event.button_mask == BUTTON_RIGHT:
-			if perspective_panning_enabled:
-				_new_translation += -(global_transform.basis.z * event.relative.y + global_transform.basis.x * event.relative.x) * perspective_panning_speed * mouse_sensitivity * (2 * int(!option_invert_panning) - 1)
-			elif panning_enabled:
-				_new_translation += -(global_transform.basis.z * event.relative.normalized().y + global_transform.basis.x * event.relative.normalized().x) * panning_speed * mouse_sensitivity * (2 * int(!option_invert_panning) - 1)
+		# if event.button_mask == BUTTON_RIGHT:
+		# 	if perspective_panning_enabled:
+		# 		_new_translation += -(global_transform.basis.z * event.relative.y + global_transform.basis.x * event.relative.x) * perspective_panning_speed * mouse_sensitivity * (2 * int(!option_invert_panning) - 1)
+		# 	elif panning_enabled:
+		# 		_new_translation += -(global_transform.basis.z * event.relative.normalized().y + global_transform.basis.x * event.relative.normalized().x) * panning_speed * mouse_sensitivity * (2 * int(!option_invert_panning) - 1)
 
 func _process(delta: float) -> void:
 	if Engine.editor_hint or !camera_enabled:

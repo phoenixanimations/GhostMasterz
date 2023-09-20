@@ -24,10 +24,6 @@ config/name="Ghost Masterz"
 run/main_scene="res://scenes/rts_camera.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-Pause="*res://prefabs/fps/singletons/pause.gd"
-
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
