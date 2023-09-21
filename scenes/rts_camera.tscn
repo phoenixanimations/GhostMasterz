@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://prefabs/garden/garden.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/rts_camera/camera.tscn" type="PackedScene" id=2]
@@ -20,6 +20,16 @@ func _input(event):
 		return null
 "
 
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.366972, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.366972, 0.366972, 0.366972, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture2D" id=6]
+gradient = SubResource( 5 )
+width = 128
+height = 128
+fill_to = Vector2( 1, 0.0764706 )
+
 [node name="Spatial" type="Spatial"]
 
 [node name="Garden" parent="." instance=ExtResource( 1 )]
@@ -38,5 +48,186 @@ script = SubResource( 4 )
 unique_name_in_owner = true
 margin_right = 366.0
 margin_bottom = 367.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 31.0
+text = "header
+line"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.196078 )
+margin_top = 35.0
+margin_right = 1024.0
+margin_bottom = 591.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 284.0
+margin_bottom = 556.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 284.0
+margin_bottom = 136.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 140.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="ToolButton2" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 140.0
+margin_right = 284.0
+margin_bottom = 276.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 140.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="ToolButton2" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 280.0
+margin_right = 284.0
+margin_bottom = 416.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 140.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="ToolButton2" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 420.0
+margin_right = 284.0
+margin_bottom = 556.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_right = 140.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="ToolButton2" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 288.0
+margin_right = 736.0
+margin_bottom = 556.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 740.0
+margin_right = 1024.0
+margin_bottom = 556.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 284.0
+margin_bottom = 136.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_right = 140.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="ToolButton2" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 140.0
+margin_right = 284.0
+margin_bottom = 276.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+margin_right = 140.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="ToolButton2" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 280.0
+margin_right = 284.0
+margin_bottom = 416.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+margin_right = 140.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="ToolButton2" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 420.0
+margin_right = 284.0
+margin_bottom = 556.0
+
+[node name="ToolButton" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+margin_right = 140.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
+
+[node name="ToolButton2" type="ToolButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 140, 136 )
+icon = SubResource( 6 )
 
 [editable path="Camera"]
