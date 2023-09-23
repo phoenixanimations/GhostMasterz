@@ -1,0 +1,43 @@
+GhostMasterz stats
+
+Human stats:
+willpower
+terror
+madness
+belief
+maximumBelief = 100
+previousFearState = Neutral
+fearState = {Calm, Neutral, Afraid, Terrified, Fleeing, Curious, Obsessed}
+previousMadnessState = Neutral
+madnessState = {Calm, Neutral, Paranoid, Disturbed, Insane}
+consciousFears = {Spiders, LoudNoises, etc.}
+subconsciousFears = {Children, etc.}
+previousMentalState = Neutral
+currentMentalState = {Neutral, Happy, Docile, Calm, Friendly, Unfriendly, Rattled, Terrified, Angry, Enraged, Sad, Confused, Depressed, Lucky, Unlucky}
+physicalState = {None, Normal, Paralyzed, Sleeping, Fainted, Frozen, Burned, Electrocuted}
+possessed = false
+bio = A person.
+pathing = {Bathroom, Kitchen, LivingRoom}
+interests = {Toilet, Mirror, Fridge, Couch}
+avoidances = {Spiders}
+friends = {Human1, Human2, Human3}
+enemies = {Human4}
+
+Ghost stats:
+type = {Elemental, Poltergeist, Wendigo, Wight, Lich, Wraith, Trickster, Sprite, Wisp, Specter, Ghoul, Phantom, Sandman, Banshee, Horror, TheDarkOne}
+tethers = {Water, Electrical, Fire}
+powers = {Power1, Power2, Power3, Power4}
+trainingLevel = {Newbie, Intermediate, Expert, Master, Grandmaster}
+
+Power stats:
+cooldown
+target = {Area, Single, Multi, Room, Map}
+terror
+madness
+belief
+mentalState
+mentalStateDuration
+physicalState
+physicalStateDuration
+possess = false
+concurrent = false
