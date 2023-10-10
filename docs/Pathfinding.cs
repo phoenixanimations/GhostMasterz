@@ -33,6 +33,7 @@ public class Pathfinding {
 		Interest fridge = new Interest("Fridge", new List<Tether>(){cold, electrical});
 		Interest television = new Interest("Television", new List<Tether>(){electrical, reflective});
 		Interest tree = new Interest("Tree", new List<Tether>(){earth});
+		Interest logs = new Interest("Logs", new List<Tether>(){earth});
 		Interest rock = new Interest("Rock", new List<Tether>(){earth});
 		Interest fireplace = new Interest("Fireplace", new List<Tether>(){hot, fire});
 		Interest pipes = new Interest("Pipes", new List<Tether>(){water, hot, blood});
@@ -43,12 +44,12 @@ public class Pathfinding {
 		Location livingroom = new Location("Livingroom", new List<Interest>(){television, fireplace}, new List<Tether>(){inside});
 		Location basement = new Location("Basement", new List<Interest>(){pipes, boiler, necronomicon}, new List<Tether>(){inside});
 		Location kitchen = new Location("Kitchen", new List<Interest>(){sink, fridge}, new List<Tether>(){inside});
-		Location forest = new Location("Forest", new List<Interest>(){tree, rock}, new List<Tether>(){outside, cold});
+		Location forest = new Location("Forest", new List<Interest>(){tree, rock, logs}, new List<Tether>(){outside, cold});
 
 		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement});
 
 		Character alpha = new Character("Alpha", new List<Location>(){livingroom, bathroom, kitchen}, new List<Interest>(){television, toilet, sink, fridge});
-		Character beta = new Character("Beta", new List<Location>(){livingroom, forest}, new List<Interest>(){tree, fireplace});
+		Character beta = new Character("Beta", new List<Location>(){livingroom, forest}, new List<Interest>(){logs, fireplace});
 		Character gamma = new Character("Gamma", new List<Location>(){livingroom}, new List<Interest>(){television, fireplace});
 		Character delta = new Character("Delta", new List<Location>(){bathroom, basement}, new List<Interest>(){bathtub, pipes, boiler});
 
