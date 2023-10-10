@@ -1,10 +1,11 @@
 //clear; cd ~/Desktop; csc Pathfinding.cs; mono Pathfinding.exe
+//clear; cd ~/Repos/GhostMasterz/docs; csc Pathfinding.cs; mono Pathfinding.exe
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public class Pathfinding {
-//	static Pathfinding pathfinding;
 	public static bool debugMode = true;
 	public static bool bypass = false;
 	public static bool continueGame = true;
@@ -23,9 +24,10 @@ public class Pathfinding {
 		Tether earth = new Tether("Earth");
 		Tether hot = new Tether("Hot");
 		Tether fire = new Tether("Fire");
+		Tether blood = new Tether("Blood");
 
 		Interest toilet = new Interest("Toilet", new List<Tether>(){water});		
-		Interest sink = new Interest("Sink", new List<Tether>(){water});//, null);
+		Interest sink = new Interest("Sink", new List<Tether>(){water});
 		Interest mirror = new Interest("Mirror", new List<Tether>(){reflective});
 		Interest bathtub = new Interest("Bathtub", new List<Tether>(){water});
 		Interest fridge = new Interest("Fridge", new List<Tether>(){cold, electrical});
@@ -33,17 +35,26 @@ public class Pathfinding {
 		Interest tree = new Interest("Tree", new List<Tether>(){earth});
 		Interest rock = new Interest("Rock", new List<Tether>(){earth});
 		Interest fireplace = new Interest("Fireplace", new List<Tether>(){hot, fire});
+		Interest pipes = new Interest("Pipes", new List<Tether>(){water, hot, blood});
+		Interest boiler = new Interest("Boiler", new List<Tether>(){water, hot, electrical});
+		Interest necronomicon = new Interest("Necronomicon", new List<Tether>(){blood});
 
 		Location bathroom = new Location("Bathroom", new List<Interest>(){toilet, sink, mirror, bathtub}, new List<Tether>(){inside});
 		Location livingroom = new Location("Livingroom", new List<Interest>(){television, fireplace}, new List<Tether>(){inside});
+		Location basement = new Location("Basement", new List<Interest>(){pipes, boiler, necronomicon}, new List<Tether>(){inside});
 		Location kitchen = new Location("Kitchen", new List<Interest>(){sink, fridge}, new List<Tether>(){inside});
 		Location forest = new Location("Forest", new List<Interest>(){tree, rock}, new List<Tether>(){outside, cold});
 
-		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest});
+		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement});
 
 		Character alpha = new Character("Alpha", new List<Location>(){livingroom, bathroom, kitchen}, new List<Interest>(){television, toilet, sink, fridge});
+		Character beta = new Character("Beta", new List<Location>(){livingroom, forest}, new List<Interest>(){tree, fireplace});
+		Character gamma = new Character("Gamma", new List<Location>(){livingroom}, new List<Interest>(){television, fireplace});
+		Character delta = new Character("Delta", new List<Location>(){bathroom, basement}, new List<Interest>(){bathtub, pipes, boiler});
 
-		print(map0.name+": ");
+		List<Character> characters = new List<Character>(){alpha, beta, gamma, delta};
+
+		/*print(map0.name+": ");
 		string stringify = "";
 		foreach(Location location in map0.locations){
 			//print('\t'+location.name+": ");
@@ -59,22 +70,33 @@ public class Pathfinding {
 				print("\t\t"+interest.name+" ("+stringify+")");
 				stringify = "";
 			}
-		}
+		}*/
 
-		print("\nAlpha's Pathing");
+		/*print("\nAlpha's Pathing");
 		foreach(Location location in alpha.pathing){
 			print(location.name);
 		}
 		print("\nAlpha's Interests");
 		foreach(Interest interest in alpha.interests){
 			print(interest.name);
+		}*/
+
+//		this search to needs to be inverted to check against the character data as opposed to the map data,
+//			as that (should) dictate the order of their pathing
+		foreach(Character character in characters){
+			foreach(Location location in map0.locations){
+				foreach(Interest interest in location.interests){
+					if((character.interests).Contains(interest)){
+						print(character.name+" was interested in the "+location.name+" " +interest.name);
+					}
+				}
+			}
 		}
 	}
 	
 	public static void cwl(System.Object line){
 		if(debugMode || bypass){
 			Console.WriteLine(line);
-//			chatHistory += line;
 		}
 		bypass = false;
 	}
