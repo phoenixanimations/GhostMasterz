@@ -48,17 +48,16 @@ public class Pathfinding {
 
 		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement});
 
-		Character alpha = new Character("Alpha", new List<Location>(){livingroom, bathroom, kitchen}, new List<Interest>(){television, toilet, sink, fridge});
-		Character beta = new Character("Beta", new List<Location>(){livingroom, forest}, new List<Interest>(){logs, fireplace});
-		Character gamma = new Character("Gamma", new List<Location>(){livingroom}, new List<Interest>(){television, fireplace});
-		Character delta = new Character("Delta", new List<Location>(){bathroom, basement}, new List<Interest>(){bathtub, pipes, boiler});
+		Character alpha = new Character("Alpha", new List<Location>(){}, new List<Interest>(){television, toilet, sink, fridge});
+		Character beta = new Character("Beta", new List<Location>(){}, new List<Interest>(){logs, fireplace});
+		Character gamma = new Character("Gamma", new List<Location>(){}, new List<Interest>(){television, fireplace});
+		Character delta = new Character("Delta", new List<Location>(){}, new List<Interest>(){bathtub, pipes, boiler, necronomicon});
 
 		List<Character> characters = new List<Character>(){alpha, beta, gamma, delta};
 
-		/*print(map0.name+": ");
+		print(map0.name+": ");
 		string stringify = "";
 		foreach(Location location in map0.locations){
-			//print('\t'+location.name+": ");
 			foreach(Tether tether in location.tethers){
 				stringify += tether.name + ", ";
 			}
@@ -71,7 +70,7 @@ public class Pathfinding {
 				print("\t\t"+interest.name+" ("+stringify+")");
 				stringify = "";
 			}
-		}*/
+		}
 
 		/*print("\nAlpha's Pathing");
 		foreach(Location location in alpha.pathing){
