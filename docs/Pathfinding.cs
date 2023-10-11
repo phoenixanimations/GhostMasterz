@@ -26,6 +26,10 @@ public class Pathfinding {
 		Tether fire = new Tether("Fire");
 		Tether blood = new Tether("Blood");
 
+/*		Physical phys_status_hot = new Physical("Hot");
+		Physical phys_status_hot = new Physical("Warm");
+		Physical phys_status_hot = new Physical("Cold");*/
+
 		Interest toilet = new Interest("Toilet", new List<Tether>(){water});		
 		Interest sink = new Interest("Sink", new List<Tether>(){water});
 		Interest mirror = new Interest("Mirror", new List<Tether>(){reflective});
@@ -41,17 +45,18 @@ public class Pathfinding {
 		Interest necronomicon = new Interest("Necronomicon", new List<Tether>(){blood});
 
 		Location bathroom = new Location("Bathroom", new List<Interest>(){toilet, sink, mirror, bathtub}, new List<Tether>(){inside});
+		Location bathroom2 = new Location("Bathroom2", new List<Interest>(){toilet, sink}, new List<Tether>(){inside});
 		Location livingroom = new Location("Livingroom", new List<Interest>(){television, fireplace}, new List<Tether>(){inside});
 		Location basement = new Location("Basement", new List<Interest>(){pipes, boiler, necronomicon}, new List<Tether>(){inside});
 		Location kitchen = new Location("Kitchen", new List<Interest>(){sink, fridge}, new List<Tether>(){inside});
 		Location forest = new Location("Forest", new List<Interest>(){tree, rock, logs}, new List<Tether>(){outside, cold});
 
-		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement});
+		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement, bathroom2});
 
-		Character alpha = new Character("Alpha", new List<Location>(){}, new List<Interest>(){television, toilet, sink, fridge});
-		Character beta = new Character("Beta", new List<Location>(){}, new List<Interest>(){logs, fireplace});
-		Character gamma = new Character("Gamma", new List<Location>(){}, new List<Interest>(){television, fireplace});
-		Character delta = new Character("Delta", new List<Location>(){}, new List<Interest>(){bathtub, pipes, boiler, necronomicon});
+		Character alpha = new Character("Alpha", new List<Location>(){}, new List<Interest>(){television, toilet, sink, fridge}, Physical.Warm);
+		Character beta = new Character("Beta", new List<Location>(){}, new List<Interest>(){logs, fireplace}, Physical.Cold);
+		Character gamma = new Character("Gamma", new List<Location>(){}, new List<Interest>(){television, fireplace}, Physical.Hot);
+		Character delta = new Character("Delta", new List<Location>(){}, new List<Interest>(){bathtub, pipes, boiler, necronomicon}, Physical.Warm);
 
 		List<Character> characters = new List<Character>(){alpha, beta, gamma, delta};
 
@@ -92,6 +97,11 @@ public class Pathfinding {
 				}
 			}
 		}
+
+		alpha.printout();
+		beta.printout();
+		gamma.printout();
+		delta.printout();
 	}
 	
 	public static void cwl(System.Object line){
@@ -121,11 +131,31 @@ public class Character {
 	public string name;
 	public List<Location> pathing;
 	public List<Interest> interests;
-	public Character(string _name, List<Location> _pathing, List<Interest> _interests){
+	public Physical physical;
+	public Character(string _name, List<Location> _pathing, List<Interest> _interests, Physical _physical){
 		name = _name;
 		pathing = _pathing;
 		interests = _interests;
+		physical = _physical;
 	}
+
+	public void printout (){
+		if(physical == Physical.Hot){
+			Console.WriteLine(name+" is hot.");
+		} else if(physical == Physical.Warm){
+			Console.WriteLine(name+" is warm.");
+		} else if(physical == Physical.Cold){
+			Console.WriteLine(name+" is cold.");
+		} else {
+			Console.WriteLine("ERROR.");
+		}
+	}
+}
+
+public enum Physical{
+	Hot,
+	Warm,
+	Cold
 }
 
 public class Map {
