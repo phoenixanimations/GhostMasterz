@@ -32,6 +32,9 @@ public class Pathfinding {
 		Tag cold = new Tag("Cold");
 		Tag electrical = new Tag("Electrical");
 		Tag reflective = new Tag("Reflective");
+		Tag air = new Tag("Air");
+		Tag plasma = new Tag("Plasma");
+		Tag ice = new Tag("Ice");
 		Tag water = new Tag("Water");
 		Tag inside = new Tag("Inside");
 		Tag outside = new Tag("Outside");
@@ -40,12 +43,25 @@ public class Pathfinding {
 		Tag fire = new Tag("Fire");
 		Tag blood = new Tag("Blood");
 		Tag bugs = new Tag("Bugs");
+		Tag snakes = new Tag("Snakes");
     	Tag light = new Tag("Light");
     	Tag darkness = new Tag("Darkness");
    		Tag hunted = new Tag("Hunted");
+   		Tag weapons = new Tag("Weapons");
 		Tag noise = new Tag("Noise");
 		Tag trapped = new Tag("Trapped");
     	Tag dirty = new Tag("Dirty");
+    	Tag heights = new Tag("Heights");
+    	Tag needles = new Tag("Needles");
+    	Tag rejection = new Tag("Rejection");
+    	Tag failure = new Tag("Failure");
+    	Tag embarrassment = new Tag("Embarrassment");
+    	Tag aging = new Tag("Aging");
+    	Tag suffering = new Tag("Suffering");
+    	Tag death = new Tag("Death");
+    	Tag corpse = new Tag("Corpse");
+    	Tag ghost = new Tag("Ghost");
+    	Tag alienation = new Tag("Alienation");//Isolation?
 
     	Gender male = new Gender("Male");
     	Gender female = new Gender("Female");
@@ -92,6 +108,12 @@ public class Pathfinding {
 		InteractiveObject pipes = new InteractiveObject("Pipes", new List<Tag>(){water, hot, blood}, new List<Tag>(){water, hot, blood});
 		InteractiveObject boiler = new InteractiveObject("Boiler", new List<Tag>(){water, hot, electrical}, new List<Tag>(){water, hot, electrical});
 		InteractiveObject necronomicon = new InteractiveObject("Necronomicon", new List<Tag>(){blood}, new List<Tag>(){blood});
+		
+		/*
+		InteractiveObject child = new InteractiveObject("Child", new List<Tag>(){}, new List<Tag>(){});
+		InteractiveObject teenager = new InteractiveObject("Teenager", new List<Tag>(){}, new List<Tag>(){});
+		InteractiveObject adult = new InteractiveObject("Adult", new List<Tag>(){}, new List<Tag>(){});
+		*/
 
 		Location bathroom = new Location("First Bathroom", new List<InteractiveObject>(){toilet, sink, mirror, bathtub}, new List<Tag>(){inside});
 		Location bathroom2 = new Location("Second Bathroom", new List<InteractiveObject>(){toilet, sink}, new List<Tag>(){inside});
