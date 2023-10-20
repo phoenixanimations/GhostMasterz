@@ -61,7 +61,9 @@ public class Pathfinding {
     	Tag death = new Tag("Death");
     	Tag corpse = new Tag("Corpse");
     	Tag ghost = new Tag("Ghost");
-    	Tag alienation = new Tag("Alienation");//Isolation?
+    	Tag isolation = new Tag("Isolation");
+//    	Tag child = new Tag("Child");
+//    	Tag adult = new Tag("Adult");
 
     	Gender male = new Gender("Male");
     	Gender female = new Gender("Female");
@@ -108,6 +110,7 @@ public class Pathfinding {
 		InteractiveObject pipes = new InteractiveObject("Pipes", new List<Tag>(){water, hot, blood}, new List<Tag>(){water, hot, blood});
 		InteractiveObject boiler = new InteractiveObject("Boiler", new List<Tag>(){water, hot, electrical}, new List<Tag>(){water, hot, electrical});
 		InteractiveObject necronomicon = new InteractiveObject("Necronomicon", new List<Tag>(){blood}, new List<Tag>(){blood});
+//		InteractiveObject human = new InteractiveObject("Human", new List<Tag>(){}, new List<Tag>(){});
 		
 		/*
 		InteractiveObject child = new InteractiveObject("Child", new List<Tag>(){}, new List<Tag>(){});
@@ -122,14 +125,31 @@ public class Pathfinding {
 		Location kitchen = new Location("Kitchen", new List<InteractiveObject>(){sink, fridge}, new List<Tag>(){inside});
 		Location forest = new Location("Forest", new List<InteractiveObject>(){tree, rock, logs}, new List<Tag>(){outside, cold});
 
+
+		Power bitterCold = new Power("Bitter Cold", 15, -1, new List<int>(){0, 0, 1}, new List<Tag>(){cold});
+		Power briefScare = new Power("Brief Scare", 20, 5, new List<int>(){10, 0, 5}, new List<Tag>(){ghost});
+		Power bonfire = new Power("Bonfire", 25, 15, new List<int>(){10, 5, 5,}, new List<Tag>(){fire,hot});
+		Power gore = new Power("Gore", 25, 15, new List<int>(){15, 0, 10}, new List<Tag>(){blood});
+		Power reveal = new Power("Reveal", 30, 5, new List<int>(){15, 0, 10}, new List<Tag>(){ghost});
+		Power snakeAttack = new Power("Snake Attack!", 30, 10, new List<int>(){15, 5, 10}, new List<Tag>(){snakes});
+		Power chase = new Power("Chase", 40, 5, new List<int>(){20, 0, 10}, new List<Tag>(){hunted});
+		Power mania = new Power("Mania", 40, 1, new List<int>(){0, 15, 10}, new List<Tag>(){});
+		Power humanTorch = new Power("Human Torch", 40, 15, new List<int>(){40, 0, 20}, new List<Tag>(){fire,hot});
+		Power paralyze = new Power("Paralyze", 50, 15, new List<int>(){25, 5, 15}, new List<Tag>(){trapped});
+
 		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement, bathroom2});
 
 		Character alpha = new Character("Alpha", male, gay, new List<Location>(){}, new List<InteractiveObject>(){television, toilet, sink, fridge}, new List<Tag>(){trapped}, normalStatus, happyStatus, 100, 0, 0, 0);
 		Character beta = new Character("Beta", male, straight, new List<Location>(){}, new List<InteractiveObject>(){logs, fireplace}, new List<Tag>(){bugs, trapped, darkness}, coldStatus, angryStatus, 80, 20, 10, 20);
 		Character gamma = new Character("Gamma", nonbinary, pansexual, new List<Location>(){}, new List<InteractiveObject>(){television, fireplace}, new List<Tag>(){outside, noise, hunted}, warmStatus, confusedStatus, 50, 10, 20, 50);
-		Character delta = new Character("Delta", female, bisexual, new List<Location>(){}, new List<InteractiveObject>(){bathtub, pipes, boiler, necronomicon}, new List<Tag>(){bugs, dirty, blood, fire}, coldStatus, curiousStatus, 20, 0, 5, 80);
+		Character delta = new Character("Delta", female, bisexual, new List<Location>(){}, new List<InteractiveObject>(){bathtub, pipes, boiler, necronomicon}, new List<Tag>(){bugs, dirty, blood, fire}, coldStatus, curiousStatus, 20, 0, 5, 80);	//Character epsilon = new Character("Epsilon", female, asexual, new List<Location>(){}, new List<InteractiveObject>(){mirror, tree}, new List<Tag>(){weapons, noise, snakes, failure}, normalStatus, indifferentStatus, 75, 20, 20, 40);
+		Ghost frosty = new Ghost("Frosty", 10, new List<Power>(){bitterCold,gore,reveal}, new List<Tag>(){cold, water});
+		Ghost bernie = new Ghost("Bernie", 10, new List<Power>(){bonfire,humanTorch}, new List<Tag>(){fire, hot, electrical});
+		Ghost medusa = new Ghost("Medusa", 25, new List<Power>(){mania,paralyze}, new List<Tag>(){earth, reflective});
+		Ghost bloodyMary = new Ghost("Bloody Mary", 20, new List<Power>(){gore,reveal,paralyze}, new List<Tag>(){reflective, blood});
 
-		List<Character> characters = new List<Character>(){alpha, beta, gamma, delta};
+		List<Character> characters = new List<Character>(){alpha, beta, gamma, delta};	//List<Character> characters = new List<Character>(){alpha, beta, gamma, delta, epsilon};
+		List<Ghost> ghosts = new List<Ghost>(){frosty, bernie, medusa, bloodyMary};
 
 		print(map0.name+": ");
 		string stringify = "";
@@ -150,20 +170,24 @@ public class Pathfinding {
 
 //		this search to needs to be inverted to check against the character data as opposed to the map data,
 //			as that (should) dictate the order of their pathing
-		/*foreach(Character character in characters){
+		foreach(Character character in characters){
 			foreach(Location location in map0.locations){
 				foreach(InteractiveObject interactiveObject in location.interactiveObjects){
 					if((character.interests).Contains(interactiveObject)){
-						print(character.name+" was interested in the "+location.name+" " +interactiveObject.name);
+						print(character.name+"\tinteracted with the ["+location.name+"] " +interactiveObject.name);
 					}
 				}
 			}
-		}*/
+		}
 
 		alpha.printout();
 		beta.printout();
 		gamma.printout();
-		delta.printout();
+		delta.printout();	//epsilon.printout();
+		frosty.printout();
+		bernie.printout();
+		medusa.printout();
+		bloodyMary.printout();
 	}
 	
 	public static void cwl(System.Object line){
@@ -227,7 +251,46 @@ public class Character {
 		interests.ForEach(x => interestsPrintout += (x.name+" "));//"Character Interests";
 		fears.ForEach(x => fearsPrintout += (x.name+" "));//"Character Fears";
 		
-		Console.WriteLine("\nName: "+name+" ("+gender.name+", "+orientation.name+")\nPathing: "+pathingPrintout+'\n'+"Interests: "+interestsPrintout+'\n'+"Fears: "+fearsPrintout+'\n'+"Physical Status: "+physicalStatus.name+'\n'+"Emotional Status: "+emotionalStatus.name+'\n'+"Willpower: "+willpower+'\n'+"Fear: "+fearMeter+'/'+willpower+'\n'+"Madness: "+madnessMeter+'/'+willpower+'\n'+"Belief: "+beliefMeter+"/100");
+		Console.WriteLine("\nName: "+name+" ("+gender.name+", "+orientation.name+")"+/*\nPathing: "+pathingPrintout+*/"\nInterests: "+interestsPrintout+'\n'+"Fears: "+fearsPrintout+'\n'+"Physical Status: "+physicalStatus.name+'\n'+"Emotional Status: "+emotionalStatus.name+'\n'+"Willpower: "+willpower+'\n'+"Fear: "+fearMeter+'/'+willpower+'\n'+"Madness: "+madnessMeter+'/'+willpower+'\n'+"Belief: "+beliefMeter+"/100");
+	}
+}
+
+public class Ghost {
+	public string name;
+	public int baseCost;
+	public List<Power> powers;
+	public List<Tag> tethers;
+	public Ghost(string _name, int _baseCost, List<Power> _powers, List<Tag> _tethers){
+		name = _name;
+		baseCost = _baseCost;
+		powers = _powers;
+		tethers = _tethers;
+	}
+
+	public void printout (){
+		string powersPrintout = "";
+		string tethersPrintout = "";
+
+		powers.ForEach(x => powersPrintout += ("\n\t"+x.name+" ("+x.cost+")"));//"Ghost Powers";
+		tethers.ForEach(x => tethersPrintout += (x.name+" "));//"Ghost Tethers";
+		
+		Console.WriteLine("\nName: "+name+"\nBase Cost: "+baseCost+"\nPowers: "+powersPrintout+"\nTethers: "+tethersPrintout);
+	}
+}
+
+public class Power {
+	public string name;
+	public int cost;
+	public int duration = 0;
+	public List<int> baseStats = new List<int>(){0, 0, 0};
+	public List<Tag> effects;
+
+	public Power(string _name, int _cost, int _duration, List<int> _baseStats, List<Tag> _effects){
+		name = _name;
+		cost = _cost;
+		duration = _duration;
+		baseStats = _baseStats;
+		effects = _effects;
 	}
 }
 
@@ -273,11 +336,10 @@ public class Location {
 	public List<InteractiveObject> interactiveObjects;
 	public List<Tag> tethers;
 	public List<Tag> traits;
-	public Location (string _name, List<InteractiveObject> _interactiveObjects, List<Tag> _tethers/*, List<Tag> _traits*/){
+	public Location (string _name, List<InteractiveObject> _interactiveObjects, List<Tag> _tethers){
 		name = _name;
 		interactiveObjects = _interactiveObjects;
 		tethers = _tethers;
-//		traits = _traits;
 	}
 }
 
