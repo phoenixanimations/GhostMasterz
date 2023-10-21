@@ -33,7 +33,7 @@ public class Pathfinding {
 		Tag electrical = new Tag("Electrical");
 		Tag reflective = new Tag("Reflective");
 		Tag air = new Tag("Air");
-		Tag plasma = new Tag("Plasma");
+//		Tag plasma = new Tag("Plasma");
 		Tag ice = new Tag("Ice");
 		Tag water = new Tag("Water");
 		Tag inside = new Tag("Inside");
@@ -42,7 +42,7 @@ public class Pathfinding {
 		Tag hot = new Tag("Hot");
 		Tag fire = new Tag("Fire");
 		Tag blood = new Tag("Blood");
-		Tag bugs = new Tag("Bugs");
+		Tag creepyCrawly = new Tag("Creepy Crawly");
 		Tag snakes = new Tag("Snakes");
     	Tag light = new Tag("Light");
     	Tag darkness = new Tag("Darkness");
@@ -51,17 +51,19 @@ public class Pathfinding {
 		Tag noise = new Tag("Noise");
 		Tag trapped = new Tag("Trapped");
     	Tag dirty = new Tag("Dirty");
-    	Tag heights = new Tag("Heights");
     	Tag needles = new Tag("Needles");
-    	Tag rejection = new Tag("Rejection");
-    	Tag failure = new Tag("Failure");
-    	Tag embarrassment = new Tag("Embarrassment");
-    	Tag aging = new Tag("Aging");
-    	Tag suffering = new Tag("Suffering");
-    	Tag death = new Tag("Death");
     	Tag corpse = new Tag("Corpse");
     	Tag ghost = new Tag("Ghost");
-    	Tag isolation = new Tag("Isolation");
+//		'intangible' Fears
+//    	Tag heights = new Tag("Heights");
+//    	Tag rejection = new Tag("Rejection");
+//    	Tag failure = new Tag("Failure");
+//    	Tag embarrassment = new Tag("Embarrassment");
+//    	Tag aging = new Tag("Aging");
+//    	Tag suffering = new Tag("Suffering");
+//    	Tag death = new Tag("Death");
+//    	Tag isolation = new Tag("Isolation");
+//		on hold at present
 //    	Tag child = new Tag("Child");
 //    	Tag adult = new Tag("Adult");
 
@@ -97,25 +99,25 @@ public class Pathfinding {
 		EmotionalStatus curiousStatus = new EmotionalStatus("Curious");
 		EmotionalStatus confusedStatus = new EmotionalStatus("Confused");
 
-		InteractiveObject toilet = new InteractiveObject("Toilet", new List<Tag>(){water}, new List<Tag>(){water});		
-		InteractiveObject sink = new InteractiveObject("Sink", new List<Tag>(){water}, new List<Tag>(){water});
-		InteractiveObject mirror = new InteractiveObject("Mirror", new List<Tag>(){reflective}, new List<Tag>(){reflective});
-		InteractiveObject bathtub = new InteractiveObject("Bathtub", new List<Tag>(){water}, new List<Tag>(){water});
-		InteractiveObject fridge = new InteractiveObject("Fridge", new List<Tag>(){cold, electrical}, new List<Tag>(){cold, electrical});
-		InteractiveObject television = new InteractiveObject("Television", new List<Tag>(){electrical, reflective}, new List<Tag>(){electrical, reflective});//divert to couch
-		InteractiveObject tree = new InteractiveObject("Tree", new List<Tag>(){earth}, new List<Tag>(){earth});
-		InteractiveObject logs = new InteractiveObject("Logs", new List<Tag>(){earth}, new List<Tag>(){earth});
-		InteractiveObject rock = new InteractiveObject("Rock", new List<Tag>(){earth}, new List<Tag>(){earth});
-		InteractiveObject fireplace = new InteractiveObject("Fireplace", new List<Tag>(){hot, fire}, new List<Tag>(){hot, fire});
-		InteractiveObject pipes = new InteractiveObject("Pipes", new List<Tag>(){water, hot, blood}, new List<Tag>(){water, hot, blood});
-		InteractiveObject boiler = new InteractiveObject("Boiler", new List<Tag>(){water, hot, electrical}, new List<Tag>(){water, hot, electrical});
-		InteractiveObject necronomicon = new InteractiveObject("Necronomicon", new List<Tag>(){blood}, new List<Tag>(){blood});
-//		InteractiveObject human = new InteractiveObject("Human", new List<Tag>(){}, new List<Tag>(){});
+		InteractiveObject toilet = new InteractiveObject("Toilet", new List<Tag>(){water});		
+		InteractiveObject sink = new InteractiveObject("Sink", new List<Tag>(){water});
+		InteractiveObject mirror = new InteractiveObject("Mirror", new List<Tag>(){reflective});
+		InteractiveObject bathtub = new InteractiveObject("Bathtub", new List<Tag>(){water});
+		InteractiveObject fridge = new InteractiveObject("Fridge", new List<Tag>(){cold, electrical});
+		InteractiveObject television = new InteractiveObject("Television", new List<Tag>(){electrical, reflective});//divert to couch
+		InteractiveObject tree = new InteractiveObject("Tree", new List<Tag>(){earth});
+		InteractiveObject logs = new InteractiveObject("Logs", new List<Tag>(){earth});
+		InteractiveObject rock = new InteractiveObject("Rock", new List<Tag>(){earth});
+		InteractiveObject fireplace = new InteractiveObject("Fireplace", new List<Tag>(){hot, fire});
+		InteractiveObject pipes = new InteractiveObject("Pipes", new List<Tag>(){water, hot, blood});
+		InteractiveObject boiler = new InteractiveObject("Boiler", new List<Tag>(){water, hot, electrical});
+		InteractiveObject necronomicon = new InteractiveObject("Necronomicon", new List<Tag>(){blood});
+//		InteractiveObject human = new InteractiveObject("Human", new List<Tag>(){});
 		
 		/*
-		InteractiveObject child = new InteractiveObject("Child", new List<Tag>(){}, new List<Tag>(){});
-		InteractiveObject teenager = new InteractiveObject("Teenager", new List<Tag>(){}, new List<Tag>(){});
-		InteractiveObject adult = new InteractiveObject("Adult", new List<Tag>(){}, new List<Tag>(){});
+		InteractiveObject child = new InteractiveObject("Child", new List<Tag>(){});
+		InteractiveObject teenager = new InteractiveObject("Teenager", new List<Tag>(){});
+		InteractiveObject adult = new InteractiveObject("Adult", new List<Tag>(){});
 		*/
 
 		Location bathroom = new Location("First Bathroom", new List<InteractiveObject>(){toilet, sink, mirror, bathtub}, new List<Tag>(){inside});
@@ -140,9 +142,9 @@ public class Pathfinding {
 		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement, bathroom2});
 
 		Character alpha = new Character("Alpha", male, gay, new List<Location>(){}, new List<InteractiveObject>(){television, toilet, sink, fridge}, new List<Tag>(){trapped}, normalStatus, happyStatus, 100, 0, 0, 0);
-		Character beta = new Character("Beta", male, straight, new List<Location>(){}, new List<InteractiveObject>(){logs, fireplace}, new List<Tag>(){bugs, trapped, darkness}, coldStatus, angryStatus, 80, 20, 10, 20);
+		Character beta = new Character("Beta", male, straight, new List<Location>(){}, new List<InteractiveObject>(){logs, fireplace}, new List<Tag>(){creepyCrawly, trapped, darkness}, coldStatus, angryStatus, 80, 20, 10, 20);
 		Character gamma = new Character("Gamma", nonbinary, pansexual, new List<Location>(){}, new List<InteractiveObject>(){television, fireplace}, new List<Tag>(){outside, noise, hunted}, warmStatus, confusedStatus, 50, 10, 20, 50);
-		Character delta = new Character("Delta", female, bisexual, new List<Location>(){}, new List<InteractiveObject>(){bathtub, pipes, boiler, necronomicon}, new List<Tag>(){bugs, dirty, blood, fire}, coldStatus, curiousStatus, 20, 0, 5, 80);	//Character epsilon = new Character("Epsilon", female, asexual, new List<Location>(){}, new List<InteractiveObject>(){mirror, tree}, new List<Tag>(){weapons, noise, snakes, failure}, normalStatus, indifferentStatus, 75, 20, 20, 40);
+		Character delta = new Character("Delta", female, bisexual, new List<Location>(){}, new List<InteractiveObject>(){bathtub, pipes, boiler, necronomicon}, new List<Tag>(){creepyCrawly, dirty, blood, fire}, coldStatus, curiousStatus, 20, 0, 5, 80);	//Character epsilon = new Character("Epsilon", female, asexual, new List<Location>(){}, new List<InteractiveObject>(){mirror, tree}, new List<Tag>(){weapons, noise, snakes, failure}, normalStatus, indifferentStatus, 75, 20, 20, 40);
 		Ghost frosty = new Ghost("Frosty", 10, new List<Power>(){bitterCold,gore,reveal}, new List<Tag>(){cold, water});
 		Ghost bernie = new Ghost("Bernie", 10, new List<Power>(){bonfire,humanTorch}, new List<Tag>(){fire, hot, electrical});
 		Ghost medusa = new Ghost("Medusa", 25, new List<Power>(){mania,paralyze}, new List<Tag>(){earth, reflective});
@@ -347,7 +349,7 @@ public class InteractiveObject {
 	public string name;
 	public List<Tag> tethers;
 	public List<Tag> traits;
-	public InteractiveObject(string _name, List<Tag> _tethers, List<Tag> _traits){
+	public InteractiveObject(string _name, List<Tag> _tethers){
 		name = _name;
 		tethers = _tethers;
 		traits = _traits;
