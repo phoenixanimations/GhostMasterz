@@ -128,16 +128,16 @@ public class Pathfinding {
 		Location forest = new Location("Forest", new List<InteractiveObject>(){tree, rock, logs}, new List<Tag>(){outside, cold});
 
 
-		Power bitterCold = new Power("Bitter Cold", 15, -1, new List<int>(){0, 0, 1}, new List<Tag>(){cold});
-		Power briefScare = new Power("Brief Scare", 20, 5, new List<int>(){10, 0, 5}, new List<Tag>(){ghost});
-		Power bonfire = new Power("Bonfire", 25, 15, new List<int>(){10, 5, 5,}, new List<Tag>(){fire,hot});
-		Power gore = new Power("Gore", 25, 15, new List<int>(){15, 0, 10}, new List<Tag>(){blood});
-		Power reveal = new Power("Reveal", 30, 5, new List<int>(){15, 0, 10}, new List<Tag>(){ghost});
-		Power snakeAttack = new Power("Snake Attack!", 30, 10, new List<int>(){15, 5, 10}, new List<Tag>(){snakes});
-		Power chase = new Power("Chase", 40, 5, new List<int>(){20, 0, 10}, new List<Tag>(){hunted});
-		Power mania = new Power("Mania", 40, 1, new List<int>(){0, 15, 10}, new List<Tag>(){});
-		Power humanTorch = new Power("Human Torch", 40, 15, new List<int>(){40, 0, 20}, new List<Tag>(){fire,hot});
-		Power paralyze = new Power("Paralyze", 50, 15, new List<int>(){25, 5, 15}, new List<Tag>(){trapped});
+		Power bitterCold = new Power("Bitter Cold", "Makes the area and surrounding objects cold.", 15, -1, new List<int>(){0, 0, 1}, new List<Tag>(){cold});
+		Power briefScare = new Power("Brief Scare", "The ghost briefly becomes visible to their target.", 20, 5, new List<int>(){10, 0, 5}, new List<Tag>(){ghost});
+		Power bonfire = new Power("Bonfire", "Makes the area and surrounding objects hot.", 25, 15, new List<int>(){10, 5, 5,}, new List<Tag>(){fire,hot});
+		Power gore = new Power("Gore", "Turns water into blood.", 25, 15, new List<int>(){15, 0, 10}, new List<Tag>(){blood});
+		Power reveal = new Power("Reveal", "The ghost briefly becomes visible to all humans.", 30, 5, new List<int>(){15, 0, 10}, new List<Tag>(){ghost});
+		Power snakeAttack = new Power("Snake Attack!", "A snake briefly appears in front of the target before slithering away.", 30, 10, new List<int>(){15, 5, 10}, new List<Tag>(){snakes});
+		Power chase = new Power("Chase", "The ghost appears to chase their target.", 40, 5, new List<int>(){20, 0, 10}, new List<Tag>(){hunted});
+		Power mania = new Power("Mania", "Increases the target's Madness.", 40, 1, new List<int>(){0, 15, 10}, new List<Tag>(){});
+		Power humanTorch = new Power("Human Torch", "Target human is set on fire.", 40, 15, new List<int>(){40, 0, 20}, new List<Tag>(){fire,hot});
+		Power paralyze = new Power("Paralyze", "Target human is unable to move.", 50, 15, new List<int>(){25, 5, 15}, new List<Tag>(){trapped});
 
 		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement, bathroom2});
 
@@ -273,7 +273,7 @@ public class Ghost {
 		string powersPrintout = "";
 		string tethersPrintout = "";
 
-		powers.ForEach(x => powersPrintout += ("\n\t"+x.name+" ("+x.cost+")"));//"Ghost Powers";
+		powers.ForEach(x => powersPrintout += ("\n\t"+x.name+" (Cost: "+x.cost+", Description: "+x.description+")"));//"Ghost Powers";
 		tethers.ForEach(x => tethersPrintout += (x.name+" "));//"Ghost Tethers";
 		
 		Console.WriteLine("\nName: "+name+"\nBase Cost: "+baseCost+"\nPowers: "+powersPrintout+"\nTethers: "+tethersPrintout);
@@ -282,13 +282,15 @@ public class Ghost {
 
 public class Power {
 	public string name;
+	public string description;
 	public int cost;
 	public int duration = 0;
 	public List<int> baseStats = new List<int>(){0, 0, 0};
 	public List<Tag> effects;
 
-	public Power(string _name, int _cost, int _duration, List<int> _baseStats, List<Tag> _effects){
+	public Power(string _name, string _description, int _cost, int _duration, List<int> _baseStats, List<Tag> _effects){
 		name = _name;
+		description = _description;
 		cost = _cost;
 		duration = _duration;
 		baseStats = _baseStats;
@@ -348,10 +350,8 @@ public class Location {
 public class InteractiveObject {
 	public string name;
 	public List<Tag> tethers;
-	public List<Tag> traits;
 	public InteractiveObject(string _name, List<Tag> _tethers){
 		name = _name;
 		tethers = _tethers;
-		traits = _traits;
 	}
 }
