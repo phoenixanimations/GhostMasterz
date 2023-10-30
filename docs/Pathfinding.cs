@@ -17,7 +17,7 @@ characters have randomized pathing at the start of the map, then fall into some 
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
+//using System.Linq;
 
 public class Pathfinding {
 	public static bool debugMode = true;
@@ -77,27 +77,27 @@ public class Pathfinding {
     	Orientation lesbian = new Orientation("Lesbian");
     	Orientation pansexual = new Orientation("Pansexual");
     	Orientation straight = new Orientation("Straight");
-
-		PhysicalStatus normalStatus = new PhysicalStatus("Normal");
-		PhysicalStatus hotStatus = new PhysicalStatus("Hot");
-		PhysicalStatus coldStatus = new PhysicalStatus("Cold");
-		PhysicalStatus warmStatus = new PhysicalStatus("Warm");
-		PhysicalStatus frozenStatus = new PhysicalStatus("Frozen");
-		PhysicalStatus burningStatus = new PhysicalStatus("Burning");
-		PhysicalStatus electrocutedStatus = new PhysicalStatus("Electrocuted");
-		PhysicalStatus sleepingStatus = new PhysicalStatus("Sleeping");
-		PhysicalStatus sleepwalkingStatus = new PhysicalStatus("Sleepwalking");
-		PhysicalStatus faintedStatus = new PhysicalStatus("Fainted");
-		PhysicalStatus comatoseStatus = new PhysicalStatus("Comatose");
-		PhysicalStatus possessedStatus = new PhysicalStatus("Possessed");
-
-		EmotionalStatus happyStatus = new EmotionalStatus("Happy");
-		EmotionalStatus sadStatus = new EmotionalStatus("Sad");
-		EmotionalStatus angryStatus = new EmotionalStatus("Angry");
-		EmotionalStatus indifferentStatus = new EmotionalStatus("Indifferent");
-		EmotionalStatus disgustedStatus = new EmotionalStatus("Disgusted");
-		EmotionalStatus curiousStatus = new EmotionalStatus("Curious");
-		EmotionalStatus confusedStatus = new EmotionalStatus("Confused");
+    	//Physical
+		Status normalStatus = new Status("Normal");
+		Status hotStatus = new Status("Hot");
+		Status coldStatus = new Status("Cold");
+		Status warmStatus = new Status("Warm");
+		Status frozenStatus = new Status("Frozen");
+		Status burningStatus = new Status("Burning");
+		Status electrocutedStatus = new Status("Electrocuted");
+		Status sleepingStatus = new Status("Sleeping");
+		Status sleepwalkingStatus = new Status("Sleepwalking");
+		Status faintedStatus = new Status("Fainted");
+		Status comatoseStatus = new Status("Comatose");
+		Status possessedStatus = new Status("Possessed");
+		//Emotions
+		Status happyStatus = new Status("Happy");
+		Status sadStatus = new Status("Sad");
+		Status angryStatus = new Status("Angry");
+		Status indifferentStatus = new Status("Indifferent");
+		Status disgustedStatus = new Status("Disgusted");
+		Status curiousStatus = new Status("Curious");
+		Status confusedStatus = new Status("Confused");
 
 		InteractiveObject toilet = new InteractiveObject("Toilet", new List<Tag>(){water});		
 		InteractiveObject sink = new InteractiveObject("Sink", new List<Tag>(){water});
@@ -128,16 +128,16 @@ public class Pathfinding {
 		Location forest = new Location("Forest", new List<InteractiveObject>(){tree, rock, logs}, new List<Tag>(){outside, cold});
 
 
-		Power bitterCold = new Power("Bitter Cold", "Makes the area and surrounding objects cold.", 15, -1, new List<int>(){0, 0, 1}, new List<Tag>(){cold});
-		Power briefScare = new Power("Brief Scare", "The ghost briefly becomes visible to their target.", 20, 5, new List<int>(){10, 0, 5}, new List<Tag>(){ghost});
-		Power bonfire = new Power("Bonfire", "Makes the area and surrounding objects hot.", 25, 15, new List<int>(){10, 5, 5,}, new List<Tag>(){fire,hot});
-		Power gore = new Power("Gore", "Turns water into blood.", 25, 15, new List<int>(){15, 0, 10}, new List<Tag>(){blood});
-		Power reveal = new Power("Reveal", "The ghost briefly becomes visible to all humans.", 30, 5, new List<int>(){15, 0, 10}, new List<Tag>(){ghost});
-		Power snakeAttack = new Power("Snake Attack!", "A snake briefly appears in front of the target before slithering away.", 30, 10, new List<int>(){15, 5, 10}, new List<Tag>(){snakes});
-		Power chase = new Power("Chase", "The ghost appears to chase their target.", 40, 5, new List<int>(){20, 0, 10}, new List<Tag>(){hunted});
-		Power mania = new Power("Mania", "Increases the target's Madness.", 40, 1, new List<int>(){0, 15, 10}, new List<Tag>(){});
-		Power humanTorch = new Power("Human Torch", "Target human is set on fire.", 40, 15, new List<int>(){40, 0, 20}, new List<Tag>(){fire,hot});
-		Power paralyze = new Power("Paralyze", "Target human is unable to move.", 50, 15, new List<int>(){25, 5, 15}, new List<Tag>(){trapped});
+		Power bitterCold = new Power("Bitter Cold", "Makes the area and surrounding objects cold.", 15, -1, new List<int>(){0, 0, 1}, TargetType.Radial);//new List<Tag>(){cold});
+		Power briefScare = new Power("Brief Scare", "The ghost briefly becomes visible to their target.", 20, 5, new List<int>(){10, 0, 5}, TargetType.Single);//new List<Tag>(){ghost});
+		Power bonfire = new Power("Bonfire", "Makes the area and surrounding objects hot.", 25, 15, new List<int>(){10, 5, 5,}, TargetType.Radial);//new List<Tag>(){fire,hot});
+		Power gore = new Power("Gore", "Turns water into blood.", 25, 15, new List<int>(){15, 0, 10}, TargetType.Radial);//new List<Tag>(){blood});
+		Power reveal = new Power("Reveal", "The ghost briefly becomes visible to all humans.", 30, 5, new List<int>(){15, 0, 10}, TargetType.LineOfSight);//new List<Tag>(){ghost});
+		Power snakeAttack = new Power("Snake Attack!", "A snake briefly appears in front of the target before slithering away.", 30, 10, new List<int>(){15, 5, 10}, TargetType.LineOfSight);//new List<Tag>(){snakes});
+		Power chase = new Power("Chase", "The ghost appears to chase their target.", 40, 5, new List<int>(){20, 0, 10}, TargetType.Single);//new List<Tag>(){hunted});
+		Power mania = new Power("Mania", "Increases the target's Madness.", 40, 1, new List<int>(){0, 15, 10}, TargetType.Single);//new List<Tag>(){});
+		Power humanTorch = new Power("Human Torch", "Target human is set on fire.", 40, 15, new List<int>(){40, 0, 20}, TargetType.Single);//new List<Tag>(){fire,hot});
+		Power paralyze = new Power("Paralyze", "Target human is unable to move.", 50, 15, new List<int>(){25, 5, 15}, TargetType.Single);//new List<Tag>(){trapped});
 
 		Map map0 = new Map("Test Map", new List<Location>(){livingroom, bathroom, kitchen, forest, basement, bathroom2});
 
@@ -222,14 +222,14 @@ public class Character {
 	public List<Location> pathing;
 	public List<InteractiveObject> interests;
 	public List<Tag> fears;
-	public PhysicalStatus physicalStatus;//Hot, Cold, Warm, Frozen, Burning, Electrocuted, Sleeping, Sleepwalking, PassedOut/Fainted, Comatose, Possessed
-	public EmotionalStatus emotionalStatus;//Happy, Sad, Angry, Indifferent, Disgust
+	public Status physicalStatus;//Hot, Cold, Warm, Frozen, Burning, Electrocuted, Sleeping, Sleepwalking, PassedOut/Fainted, Comatose, Possessed
+	public Status emotionalStatus;//Happy, Sad, Angry, Indifferent, Disgust
 	public int maximumBelief = 100;
 	public int willpower;
 	public int fearMeter;
 	public int madnessMeter;
 	public int beliefMeter;
-	public Character(string _name, Gender _gender, Orientation _orientation, List<Location> _pathing, List<InteractiveObject> _interests, List<Tag> _fears, PhysicalStatus _physicalStatus, EmotionalStatus _emotionalStatus, int _willpower, int _fearMeter, int _madnessMeter, int _beliefMeter){
+	public Character(string _name, Gender _gender, Orientation _orientation, List<Location> _pathing, List<InteractiveObject> _interests, List<Tag> _fears, Status _physicalStatus, Status _emotionalStatus, int _willpower, int _fearMeter, int _madnessMeter, int _beliefMeter){
 		name = _name;
 		gender = _gender;
 		orientation = _orientation;
@@ -280,21 +280,44 @@ public class Ghost {
 	}
 }
 
-public class Power {
-	public string name;
-	public string description;
-	public int cost;
-	public int duration = 0;
-	public List<int> baseStats = new List<int>(){0, 0, 0};
-	public List<Tag> effects;
+public enum TargetType {
+	Single,
+	LineOfSight,
+	Radial,
+	Room,
+	Map
+}
 
-	public Power(string _name, string _description, int _cost, int _duration, List<int> _baseStats, List<Tag> _effects){
+public class Power {
+	public string name = "[invalid name]";
+	public string description = "[invalid description]";
+	public int cost = 0;
+	public int duration = 1;
+	public List<int> baseStats = new List<int>(){0, 0, 0};
+	public Enum targets = TargetType.Single;
+	//public List<Tag> effects = new List<Tag>(){};
+
+	Power(string _name, string _description, int _cost, int _duration, List<int> _baseStats, TargetType _targets):
+		base("[invalid name]", "[invalid description]", 0, 1, new List<int>(){0, 0, 0}, TargetType.Single){/*List<Tag> _effects,*/
 		name = _name;
 		description = _description;
 		cost = _cost;
 		duration = _duration;
 		baseStats = _baseStats;
-		effects = _effects;
+		targets = _targets;
+//		effects = _effects;
+	}
+
+	public virtual void PowerEffects(Ghost ghost){
+		//Console.WriteLine(name + " was activated.");
+	}
+}
+
+public class Rain : Power {
+	new string name = "Rain";
+
+	public override void PowerEffects(Ghost ghost){
+		Console.WriteLine(name + " was activated.");
 	}
 }
 
@@ -312,16 +335,9 @@ public class Orientation {
 	}
 }
 
-public class PhysicalStatus {
+public class Status {
 	public string name;
-	public PhysicalStatus(string _name){
-		name = _name;
-	}
-}
-
-public class EmotionalStatus {
-	public string name;
-	public EmotionalStatus(string _name){
+	public Status(string _name){
 		name = _name;
 	}
 }
