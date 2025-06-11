@@ -1,0 +1,8 @@
+Model Information:
+* title:	Corner Desk
+* source:	https://sketchfab.com/3d-models/corner-desk-81a827cd9cb74af3a2d33fb3bc2c7cc6
+* author:	Graham Rust (https://sketchfab.com/GRXR.ca)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

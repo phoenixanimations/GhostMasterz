@@ -1,0 +1,8 @@
+Model Information:
+* title:	Hammer
+* source:	https://sketchfab.com/3d-models/hammer-bdb663c8be5e43fbb23522e994ae52d4
+* author:	shuvalov.di (https://sketchfab.com/shuvalov.di)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

@@ -1,0 +1,529 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 20128,
+      "max": [
+        0.8801760077476501,
+        -0.7265980243682861,
+        1.1259160041809082
+      ],
+      "min": [
+        -0.8770700097084045,
+        -0.9620410203933716,
+        1.0909700393676758
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 241536,
+      "componentType": 5126,
+      "count": 20128,
+      "max": [
+        1.0,
+        0.9999994039535522,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -0.9999994039535522,
+        9.999557369155809e-05
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 20128,
+      "max": [
+        0.9999997019767761,
+        0.8474374413490295,
+        0.9999979138374329,
+        1.0
+      ],
+      "min": [
+        -0.9999995827674866,
+        -0.8473968505859375,
+        -0.9999980330467224,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 20128,
+      "max": [
+        0.9962000250816345,
+        0.992231011390686
+      ],
+      "min": [
+        0.0047969999723136425,
+        0.004120999947190285
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 84480,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 483072,
+      "componentType": 5126,
+      "count": 1235,
+      "max": [
+        0.17374500632286072,
+        -0.39890599250793457,
+        0.1493699997663498
+      ],
+      "min": [
+        -0.17374500632286072,
+        -0.6502839922904968,
+        0.0003980000037699938
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 497892,
+      "componentType": 5126,
+      "count": 1235,
+      "max": [
+        1.0,
+        0.4520072638988495,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 322048,
+      "componentType": 5126,
+      "count": 1235,
+      "max": [
+        0.993216335773468,
+        1.0,
+        0.9999997615814209,
+        1.0
+      ],
+      "min": [
+        -0.9931902885437012,
+        -0.9999415874481201,
+        -0.7044795155525208,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 161024,
+      "componentType": 5126,
+      "count": 1235,
+      "max": [
+        0.861257016658783,
+        0.6707479953765869
+      ],
+      "min": [
+        0.08420799672603607,
+        0.020858999341726303
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 337920,
+      "componentType": 5125,
+      "count": 4656,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 512712,
+      "componentType": 5126,
+      "count": 9828,
+      "max": [
+        1.2348029613494873,
+        0.49007800221443176,
+        2.152100086212158
+      ],
+      "min": [
+        -1.2348029613494873,
+        -0.9760029911994934,
+        0.0018319999799132347
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 630648,
+      "componentType": 5126,
+      "count": 9828,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 341808,
+      "componentType": 5126,
+      "count": 9828,
+      "max": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 170904,
+      "componentType": 5126,
+      "count": 9828,
+      "max": [
+        0.9684180021286011,
+        0.9684180021286011
+      ],
+      "min": [
+        0.004459999967366457,
+        0.004025000147521496
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 356544,
+      "componentType": 5125,
+      "count": 35496,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Lília Mara (https://sketchfab.com/Lilia_WasTaken)",
+      "license": "SKETCHFAB Standard (https://sketchfab.com/licenses)",
+      "source": "https://sketchfab.com/3d-models/wild-west-style-wooden-piano-af9cc3fea3174a838b44d600805befdb",
+      "title": "Wild West Style Wooden Piano"
+    },
+    "generator": "Sketchfab-15.53.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 498528,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 249528,
+      "byteOffset": 498528,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 748584,
+      "byteOffset": 748056,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 499056,
+      "byteOffset": 1496640,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1995696,
+      "uri": "ltf.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_specular"
+  ],
+  "images": [
+    {
+      "uri": "textures/Piano_Keys_baseColor.png"
+    },
+    {
+      "uri": "textures/Piano_Keys_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Piano_Keys_normal.png"
+    },
+    {
+      "uri": "textures/Piano_Metal_baseColor.png"
+    },
+    {
+      "uri": "textures/Piano_Metal_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Piano_Metal_normal.png"
+    },
+    {
+      "uri": "textures/Piano_Wood_baseColor.png"
+    },
+    {
+      "uri": "textures/Piano_Wood_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Piano_Wood_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 1.0
+        }
+      },
+      "name": "Piano_Keys",
+      "normalTexture": {
+        "index": 2
+      },
+      "occlusionTexture": {
+        "index": 1
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 0.5584132254862487
+        }
+      },
+      "name": "Piano_Metal",
+      "normalTexture": {
+        "index": 5
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 4
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "Piano_Wood",
+      "normalTexture": {
+        "index": 8
+      },
+      "occlusionTexture": {
+        "index": 7
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 6
+        },
+        "metallicRoughnessTexture": {
+          "index": 7
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Object_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_1",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TANGENT": 7,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Object_2",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 11,
+            "POSITION": 10,
+            "TANGENT": 12,
+            "TEXCOORD_0": 13
+          },
+          "indices": 14,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.6427238583564758,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.4271336520465546e-16,
+        -0.6427238583564758,
+        0.0,
+        0.0,
+        0.6427238583564758,
+        1.4271336520465546e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2,
+        3,
+        4
+      ],
+      "name": "Piano.obj.cleaner.materialmerger.gles"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_2"
+    },
+    {
+      "mesh": 1,
+      "name": "Object_3"
+    },
+    {
+      "mesh": 2,
+      "name": "Object_4"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    },
+    {
+      "sampler": 0,
+      "source": 5
+    },
+    {
+      "sampler": 0,
+      "source": 6
+    },
+    {
+      "sampler": 0,
+      "source": 7
+    },
+    {
+      "sampler": 0,
+      "source": 8
+    }
+  ]
+}
