@@ -1,4 +1,5 @@
 extends Spatial
+#Spreadsheet: https://docs.google.com/spreadsheets/d/1SEBgNcqBGfwkRxCyWkt7A4Ibf0KvK61WBYy0zoP1Mz0
 #characters have randomized pathing at the start of the map, then fall into some sort of routine indefinitely until disturbed,
 #	also if they have an interest that is at or above capacity, they will try to find an alternative Interactive Object to use instead
 #	to complete their current interest/goal, interests also appear to be timer-based, and some may be 'indefinite until disturbed',
@@ -141,10 +142,11 @@ func create_ghost(_name:String, _base_cost:int, _tethers:Array):
 	ghosts.push_back(ghost)
 	return ghost
 
-func create_map(_name:String, _description:String, _base_plasm:int, _time_goal:int, _personal_best_time:int):
+func create_map(_name:String, _description:String, _allowed_haunters:Array, _base_plasm:int, _time_goal:int, _personal_best_time:int):
 	var map := {
 		name = _name,
 		description = _description,
+		allowed_haunters = _alowed_haunters,
 		base_plasm = _base_plasm,
 		time_goal = _time_goal,
 		personal_best_time = _personal_best_time,
@@ -243,17 +245,18 @@ func add_all_locations_to_map1():
 	add_location_to_map(kitchen, map1)
 
 func add_all_powers_to_ghosts():
+	#Frosty
 	add_power_to_ghost(bitter_cold, frosty)
 	add_power_to_ghost(brief_reveal, frosty)
 	add_power_to_ghost(gore, frosty)
-	
+	#Bernie
 	add_power_to_ghost(bonfire, bernie)
 	add_power_to_ghost(human_torch, bernie)
-	
+	#Medusa
 	add_power_to_ghost(mania, medusa)
 	add_power_to_ghost(paralyze, medusa)
 	add_power_to_ghost(snake_attack, medusa)
-	
+	#Bloody Mary
 	add_power_to_ghost(mania, bloody_mary)
 	add_power_to_ghost(brief_reveal, bloody_mary)
 	add_power_to_ghost(gore, bloody_mary)
@@ -262,7 +265,7 @@ func _ready():
 #	Map-related
 	create_all_interactive_objects()
 	create_all_locations()
-	map1 = create_map("The Dead Evil Cabin in the Forest", "It's so evil and so dead and so cabiny and also a forest.", 100, 1200, -1)
+	map1 = create_map("The Dead Evil Cabin in the Forest", "It's so evil and so dead and so cabiny and also a forest.", [frosty, bernie, medusa, bloody_mary] 100, 1200, -1)
 #	Character-related (HAS TO OCCUR AFTER MAP CREATION)
 	create_all_characters()
 #	add_all_characters_to_starting_locations()
