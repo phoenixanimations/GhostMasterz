@@ -1,0 +1,91 @@
+Ghost Master Remake (Brainstorm File)
+
+Name: Phantomaster(?) (Geistmaster? or is that too much of a ripoff?)
+
+
+Shadeville Highschool AKA the Ghoul School (Main Hub)
+
+Level Titles (origin) - setting:
+	0. Grave Times at Shadeville High (Intoduction/Tutorial level)
+
+	Friday, October 31st (Friday the 13th) - Camp/Woodsy outdoors setting
+	Poultrygeist (Poltergeist) & Biohaunters (Resident Evil/'Biohazard') - Mansion estate
+	Mean Ghouls (Mean Girls), Dead Haunters Society (Dead Poets Society), Good Will Haunting (Good Will Hunting), Not Another Ghost Pun (the latter is a joke level) - Highschool - All teens +Principal Winkler
+	
+	Spooky Hollow (Sleepy Hollow)
+	Ghostblasters (Ghostbusters) - Ghostblasters HQ
+
+												Nightmares on Specterstreet (A Nightmare on Elm Street) - Neighborhood
+	Cabin Griefers (Cabin Fever) - 'Cabin in the Woods' setting - possibly an underground lab as a reference to RE/CitW (could be related to the Ghostblasters and their attempts to subdue to 'Darkling')
+	Wight Night? (Fright Night) - unsure
+
+	Infinity. Return of the Ghosts Who Haunt the Mansion Belonging to the Spooky Dead, Part 6: Haunters Take the City (everything, joke level) - Entire city? Final level?
+	
+
+As before, uses the system of:
+	Terror
+	Madness
+	Belief
+
+
+Characters (origin):
+	Highschool level:
+		Sydney Campbell (Scream, /not/ Scary Movie, which uses this name already)
+		Randy Kennedy / Jamie Meeks (Scream)
+		Stuart Mochrie (Scream)
+		William Loomer (Scream)
+		Principal Winkler (Scream)
+
+		Marlon
+		Keenan Ivory
+		Shawn
+		Craig
+
+	Mansion level:
+		Carol Anne (Poltergeist)
+
+
+
+Fetters:
+	Inside
+	Outside
+	Hallways/Thoroughfares
+	Adult
+	Child/Teen
+	Death/Murder
+	Emotional
+	Electrical
+	Natural
+	Water
+	Loud
+	Spooky
+
+
+Ghosts (origin) - moveset:
+	Imports:
+	
+	Slender (Slenderman?) - 
+	Spindlegs (Clatterclaws) - 
+	Snowstalker (Windwalker the Wendigo) - 
+	Butterbaster (Ghastly) - 
+	Wisakedjak (Wisakejak) - 
+	Headless Jack (Dragoon) - 
+	Boo! (Boo) - 
+	??? (Electrospasm) - 
+	Morpheus (Hypnos/) - 
+	??? (Weatherwitch/Moonscream/Brigit) - 
+	??? (Shivers) - 
+	??? (Cogjammer/Hogwash) - 
+	??? (Hard Boiled) - 
+	??? (Firetail/Sparkle) - 
+	??? (Raindancer/Wavemaster) - 
+	??? (Aether/Whisperwind)
+	??? (Stonewall/Black Crow/Banzai) - 
+	??? (Arclight) - 
+	??? (Scarecrow) - 
+	??? (Darkling) - 
+
+	Original:
+
+	Bill (literally a stack of papers, joke character) - Expose (only works on adults who are poor [not homeless] or very stingy)
+	Him (It) - Twist: Twists self into a 'baloon animal', Ghastly Surprise: Pulls on clown nose, elongating it into a 'snake' that slithers across the room or chases someone, Dead Frights: Gazes into the human's soul and learns their deepest, darkest fears (fills the entire Belief meter), Possess: Possesses a human, generating Belief over time (human is immune to Terror and Madness during this time and cannot be 'scared away' until the possession ends)
