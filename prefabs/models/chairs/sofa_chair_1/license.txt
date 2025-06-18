@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sofa Chair
+* source:	https://sketchfab.com/3d-models/sofa-chair-24933d12289846f79c7eb54c4e465176
+* author:	DeadEndGames (https://sketchfab.com/aPXND4)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sofa Chair" (https://sketchfab.com/3d-models/sofa-chair-24933d12289846f79c7eb54c4e465176) by DeadEndGames (https://sketchfab.com/aPXND4) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

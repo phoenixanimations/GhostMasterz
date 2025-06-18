@@ -1,8 +1,0 @@
-Model Information:
-* title:	Library Stairs
-* source:	https://sketchfab.com/3d-models/library-stairs-160a0135bd184810b3c3180b97bd6159
-* author:	shuvalov.di (https://sketchfab.com/shuvalov.di)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

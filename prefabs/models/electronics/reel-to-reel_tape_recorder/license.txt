@@ -1,0 +1,11 @@
+Model Information:
+* title:	Reel-to-Reel Tape Recorder
+* source:	https://sketchfab.com/3d-models/reel-to-reel-tape-recorder-160ba370260b4f2b87effeaa0765f705
+* author:	YJ_ (https://sketchfab.com/YJ_)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Reel-to-Reel Tape Recorder" (https://sketchfab.com/3d-models/reel-to-reel-tape-recorder-160ba370260b4f2b87effeaa0765f705) by YJ_ (https://sketchfab.com/YJ_) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

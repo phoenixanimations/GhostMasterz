@@ -1,0 +1,8 @@
+Model Information:
+* title:	Paper Tissue Box
+* source:	https://sketchfab.com/3d-models/paper-tissue-box-c75a979059ff40a59f618c434d35b14b
+* author:	Veebroush (https://sketchfab.com/veebroush)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

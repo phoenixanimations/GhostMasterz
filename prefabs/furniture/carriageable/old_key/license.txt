@@ -1,8 +1,0 @@
-Model Information:
-* title:	Old Key
-* source:	https://sketchfab.com/3d-models/old-key-5a74fa82815b4e899ad4d5817d58ade5
-* author:	shuvalov.di (https://sketchfab.com/shuvalov.di)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

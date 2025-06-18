@@ -1,0 +1,11 @@
+Model Information:
+* title:	Door (wood)
+* source:	https://sketchfab.com/3d-models/door-wood-afed9756ba974d1395a336124ff326fd
+* author:	DiggenDigga (https://sketchfab.com/diggendigga)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Door (wood)" (https://sketchfab.com/3d-models/door-wood-afed9756ba974d1395a336124ff326fd) by DiggenDigga (https://sketchfab.com/diggendigga) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

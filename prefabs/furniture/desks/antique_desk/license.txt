@@ -1,8 +1,0 @@
-Model Information:
-* title:	Antique Desk
-* source:	https://sketchfab.com/3d-models/antique-desk-9b3997f19d034134b1ca4337c414f339
-* author:	Timothy Ahene (https://sketchfab.com/timothyahene)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

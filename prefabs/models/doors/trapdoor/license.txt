@@ -1,0 +1,11 @@
+Model Information:
+* title:	Trapdoor
+* source:	https://sketchfab.com/3d-models/trapdoor-c4b7941fc4874a4a8ce58864a585e5e2
+* author:	NotPaca (https://sketchfab.com/Notvolts)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Trapdoor" (https://sketchfab.com/3d-models/trapdoor-c4b7941fc4874a4a8ce58864a585e5e2) by NotPaca (https://sketchfab.com/Notvolts) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

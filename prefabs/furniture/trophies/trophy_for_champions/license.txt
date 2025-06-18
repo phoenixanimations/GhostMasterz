@@ -1,8 +1,0 @@
-Model Information:
-* title:	Trophy for champions
-* source:	https://sketchfab.com/3d-models/trophy-for-champions-81f4f45074314634b25862f7b5ff4e8c
-* author:	assetfactory (https://sketchfab.com/assetfactory)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

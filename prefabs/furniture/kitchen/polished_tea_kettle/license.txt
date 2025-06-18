@@ -1,8 +1,0 @@
-Model Information:
-* title:	Polished Tea Kettle
-* source:	https://sketchfab.com/3d-models/polished-tea-kettle-7076495f9b5946c596dbd3475972a1db
-* author:	shuvalov.di (https://sketchfab.com/shuvalov.di)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

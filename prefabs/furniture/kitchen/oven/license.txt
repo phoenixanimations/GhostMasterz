@@ -1,8 +1,0 @@
-Model Information:
-* title:	Oven
-* source:	https://sketchfab.com/3d-models/oven-61e012311ce24d78b553e8371213f458
-* author:	jeet kaur (https://sketchfab.com/kkchopra3110)
-
-Model License:
-* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
-* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

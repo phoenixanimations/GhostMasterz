@@ -1,0 +1,8 @@
+Model Information:
+* title:	Inkwell with feather pen
+* source:	https://sketchfab.com/3d-models/inkwell-with-feather-pen-cdfc5e993a8040ef9bb3233c2bbe7179
+* author:	shuvalov.di (https://sketchfab.com/shuvalov.di)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

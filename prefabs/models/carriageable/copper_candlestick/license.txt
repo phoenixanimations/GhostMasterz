@@ -1,0 +1,8 @@
+Model Information:
+* title:	Copper candlestick
+* source:	https://sketchfab.com/3d-models/copper-candlestick-a733b4ab7cd64106b17ff685568f16d6
+* author:	shuvalov.di (https://sketchfab.com/shuvalov.di)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
