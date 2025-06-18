@@ -142,16 +142,17 @@ func create_ghost(_name:String, _base_cost:int, _tethers:Array):
 		name = _name,
 		baseCost = _base_cost,
 		powers = [],
-		tethers = _tethers
+		tethers = _tethers,
+		can_tether = false
 	}
 	ghosts.push_back(ghost)
 	return ghost
 
-func create_map(_name:String, _description:String, _allowed_haunters:Array, _base_plasm:int, _time_goal:int, _personal_best_time:int):
+func create_map(_name:String, _description:String, _base_plasm:int, _time_goal:int, _personal_best_time:int):
 	var map := {
 		name = _name,
 		description = _description,
-		allowed_haunters = _allowed_haunters,
+		allowed_ghosts = [],
 		base_plasm = _base_plasm,
 		time_goal = _time_goal,
 		personal_best_time = _personal_best_time,
@@ -250,6 +251,15 @@ func add_all_locations_to_map1():
 	add_location_to_map(forest, map1)
 	add_location_to_map(kitchen, map1)
 
+func add_allowed_ghost_to_map(ghost:Dictionary, map:Dictionary):
+	map.allowed_ghosts.push_back(ghost)
+
+func add_all_allowed_ghosts_to_map1():
+	add_allowed_ghost_to_map(frosty, map1)
+	add_allowed_ghost_to_map(bernie, map1)
+	add_allowed_ghost_to_map(medusa, map1)
+	add_allowed_ghost_to_map(bloody_mary, map1)
+
 func add_all_powers_to_ghosts():
 	#Frosty
 	add_power_to_ghost(bitter_cold, frosty)
@@ -272,27 +282,29 @@ func _ready():
 #	Map-related
 	create_all_interactive_objects()
 	create_all_locations()
-	map1 = create_map("The Dead Evil Cabin in the Forest", "It's so evil and so dead and so cabiny and also a forest.", [frosty, bernie, medusa, bloody_mary], 100, 1200, -1)
-#	Character-related (HAS TO OCCUR AFTER MAP CREATION)
-	create_all_characters()
-#	add_all_characters_to_starting_locations()
+	map1 = create_map("The Dead Evil Cabin in the Forest", "It's so evil and so dead and so cabiny and also a forest.", 100, 1200, -1)
 #	Ghost-related
 	create_all_powers()
 	create_all_ghosts()
+#	Character-related (HAS TO OCCUR AFTER MAP CREATION)
+	create_all_characters()
+#	add_all_characters_to_starting_locations()
 #	Add all alls
 	add_all_objects_to_locations()
 	add_all_locations_to_map1()
+	add_all_allowed_ghosts_to_map1()
 	add_all_powers_to_ghosts()
 	
 	#For debugging if a ghost can tether to an object with a location
-#	for location in map1.locations:
-#		for ghost in ghosts:
-#			ghost.can_tether = false
-#		for interactive_object in location.interactive_objects:
-#			for ghost in ghosts:
-#				for tether in interactive_object.tethers:
-#					if(ghost.tethers.has(tether)):
-#						ghost.can_tether = true
-#						print("%s can tether to %s (%s: %s)."% [ghost.name, location.name, interactive_object.name, Tether.keys()[tether]])
-#						break
+	for location in map1.locations:
+		for interactive_object in location.interactive_objects:
+			for ghost in ghosts:
+				if(!map1.allowed_ghosts.has(ghost)):
+					continue
+				for tether in interactive_object.tethers:
+					if(ghost.tethers.has(tether)):
+						ghost.can_tether = true
+						if(ghost.can_tether):
+							print("%s can tether to %s (%s: %s)."% [ghost.name, location.name, interactive_object.name, Tether.keys()[tether]])
+							break
 #				print("Location: %s, Object: %s, Tether: %s" % [location.name, interactive_object.name, Tether.keys()[tether]])
