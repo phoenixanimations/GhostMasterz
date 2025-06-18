@@ -349,4 +349,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
+[node name="NavMeshContainer" type="Spatial" parent="."]
+
+[node name="NavigationAgent" type="NavigationAgent" parent="NavMeshContainer"]
+
+[node name="Navigation" type="Navigation" parent="NavMeshContainer"]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="NavMeshContainer"]
+
 [editable path="Camera"]
