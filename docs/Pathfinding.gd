@@ -17,58 +17,60 @@ var bypass = false
 var continueGame = true
 var rng = RandomNumberGenerator.new()
 
-var toilet
-var sink
-var mirror
 var bathtub
-var fridge
-var television
-var tree
-var logs
-var rock
-var fireplace
-var pipes
+var bed
 var boiler
+var fireplace
+var fridge
+var lamp
+var logs
+var mirror
 var necronomicon
+var pipes
+var rock
+var sink
+var television
+var toilet
+var tree
 var interactive_objects := []
 
 var ash
 var cheryl
-var scott
 var linda
+var scott
 var shelly
 var characters := []
 
-var first_bathroom
-var second_bathroom
-var living_room
-var bedroom
 var basement
-var kitchen
+var bedroom
+var first_bathroom
 var forest
+var kitchen
+var living_room
+var second_bathroom
 var locations := []
 
 var bitter_cold := {}
 var brief_reveal := {}
 var bonfire := {}
 var gore := {}
-var human_torch := {}
 var human_popsicle := {}
+var human_torch := {}
 var mania := {}
 var paralyze := {}
 var snake_attack := {}
 var powers := []
 
-var frosty
 var bernie
-var medusa
 var bloody_mary
+var frosty
+var medusa
 var ghosts := []
 
 var map1
 
 enum Fear {AGING, AIR, BLOOD, BURNING, CORPSE, CREEPYCRAWLY, DARKNESS, DEATH, DIRTY, EMBARRASSMENT, FAILURE, FIRE, FREEZING, GHOST, HEIGHTS, HUNTED, ISOLATION, NEEDLES, NOISE, REJECTION, SNAKES, SUFFERING, TRAPPED, WEAPONS}
-enum Tether {AIR, BLOOD, BURNING, COLD, CORPSE, CREEPY, DARK, DEATH, DIRTY, EARTH, ELECTRICAL, FIRE, FROZEN, HOT, ICE, INSIDE, LIGHT, OUTSIDE, PLASMA, REFLECTIVE, WATER, WEAPON}
+enum Tether {AIR, BLOOD, BURNING, COLD, CORPSE, CREEPY, DARK, DEATH, DIRTY, EARTH, ELECTRICAL, FIRE, FROZEN, HOT, ICE, INSIDE, LIGHT, OUTSIDE, PLASMA, REFLECTIVE, WARM, WATER, WEAPON}
 enum Age {CHILD, TEENAGER, ADULT, ELDERLY}
 enum Effect {BLIZZARD, BURNING, COLD, FIRE, FREEZING, FROZEN, HOT, RAIN, SNOW, SWELTERING, TEMPEST, WARM, WINDY}
 enum Gender {CIS_MAN, CIS_WOMAN, NON_BINARY, TRANS_MAN, TRANS_WOMAN}
@@ -148,7 +150,7 @@ func create_ghost(_name:String, _base_cost:int, _tethers:Array):
 	ghosts.push_back(ghost)
 	return ghost
 
-func create_map(_name:String, _description:String, _base_plasm:int, _time_goal:int, _personal_best_time:int):
+func create_map(_name:String, _description:String, _base_plasm:int, _time_goal:Array, _personal_best_time:int):
 	var map := {
 		name = _name,
 		description = _description,
@@ -165,7 +167,7 @@ func add_object_to_location(object:Dictionary, location:Dictionary):
 
 func add_power_to_ghost(power:Dictionary, ghost:Dictionary):
 	ghost.powers.push_back(power)
-	
+
 func add_location_to_map(location:Dictionary, map:Dictionary):
 	map.locations.push_back(location)
 
@@ -174,19 +176,21 @@ func add_character_to_starting_location(character:Dictionary):
 	set_location.characters.push_back(character)
 
 func create_all_interactive_objects():
-	toilet = create_interactive_object("Toilet", [Tether.WATER])
-	sink = create_interactive_object("Sink", [Tether.WATER])
-	mirror = create_interactive_object("Mirror", [Tether.REFLECTIVE])
 	bathtub = create_interactive_object("Bathtub", [Tether.WATER])
-	fridge = create_interactive_object("Fridge", [Tether.COLD, Tether.ELECTRICAL])
-	television = create_interactive_object("Television", [Tether.ELECTRICAL, Tether.REFLECTIVE])
-	tree = create_interactive_object("Tree", [Tether.EARTH])
-	logs = create_interactive_object("Logs", [Tether.EARTH])
-	rock = create_interactive_object("Rock", [Tether.EARTH])
-	fireplace = create_interactive_object("Fireplace", [Tether.FIRE, Tether.HOT])
-	pipes = create_interactive_object("Pipes", [Tether.BLOOD, Tether.HOT, Tether.WATER])
+	bed = create_interactive_object("Bed", [Tether.WARM])
 	boiler = create_interactive_object("Boiler", [Tether.ELECTRICAL, Tether.HOT, Tether.WATER])
+	fireplace = create_interactive_object("Fireplace", [Tether.FIRE, Tether.HOT])
+	fridge = create_interactive_object("Fridge", [Tether.COLD, Tether.ELECTRICAL])
+	lamp = create_interactive_object("Lamp", [Tether.LIGHT, Tether.ELECTRICAL])
+	logs = create_interactive_object("Logs", [Tether.EARTH])
+	mirror = create_interactive_object("Mirror", [Tether.REFLECTIVE])
 	necronomicon = create_interactive_object("Necronomicon", [Tether.BLOOD])
+	pipes = create_interactive_object("Pipes", [Tether.BLOOD, Tether.HOT, Tether.WATER])
+	rock = create_interactive_object("Rock", [Tether.EARTH])
+	sink = create_interactive_object("Sink", [Tether.WATER])
+	television = create_interactive_object("Television", [Tether.ELECTRICAL, Tether.REFLECTIVE])
+	toilet = create_interactive_object("Toilet", [Tether.WATER])
+	tree = create_interactive_object("Tree", [Tether.EARTH])
 
 func create_all_characters():
 	ash = create_character("Ash", Age.ADULT, living_room, Gender.CIS_MAN, Orientation.STRAIGHT, [PhysicalStatus.NORMAL], [EmotionalStatus.CURIOUS], [Fear.SUFFERING, Fear.REJECTION, Fear.CORPSE])
@@ -196,51 +200,53 @@ func create_all_characters():
 	shelly = create_character("Shelly", Age.ADULT, kitchen, Gender.TRANS_WOMAN, Orientation.BISEXUAL, [PhysicalStatus.COLD], [EmotionalStatus.CONFUSED], [Fear.BLOOD, Fear.DEATH])
 
 func create_all_locations():
-	first_bathroom = create_location("First Bathroom",[Tether.INSIDE])
-	second_bathroom = create_location("Second Bathroom",[Tether.INSIDE])
-	living_room = create_location("Living Room",[Tether.INSIDE])
-	bedroom = create_location("Bedroom",[Tether.INSIDE])
-	basement = create_location("Basement",[Tether.INSIDE, Tether.CREEPY, Tether.DARK])
-	kitchen = create_location("Kitchen",[Tether.INSIDE])
-	forest = create_location("Forest",[Tether.OUTSIDE, Tether.COLD])
+	basement = create_location("Basement", [Tether.CREEPY, Tether.DARK, Tether.INSIDE])
+	bedroom = create_location("Bedroom", [Tether.INSIDE])
+	first_bathroom = create_location("First Bathroom", [Tether.INSIDE])
+	forest = create_location("Forest", [Tether.OUTSIDE, Tether.COLD])
+	kitchen = create_location("Kitchen", [Tether.INSIDE])
+	living_room = create_location("Living Room", [Tether.INSIDE])
+	second_bathroom = create_location("Second Bathroom", [Tether.INSIDE])
 
 func create_all_powers():
 	bitter_cold = create_power("Bitter Cold", "Makes the area and surrounding objects cold.", 15, -1, [0, 0, 1], TargetType.MAP, [], [Effect.COLD])
 	bonfire = create_power("Bonfire", "Makes the area and surrounding objects hot.", 25, 15, [10, 5, 5], TargetType.RADIAL, [Fear.FIRE], [Effect.HOT])
 	brief_reveal = create_power("Brief Reveal", "The ghost briefly becomes visible to their target.", 30, 5, [15, 0, 10], TargetType.LINE_OF_SIGHT, [Fear.GHOST], [])
 	gore = create_power("Gore", "Turns water into blood.", 25, 15, [15, 0, 10], TargetType.RADIAL, [Fear.BLOOD], [])
-	human_torch  = create_power("Human Torch", "Target human is set on fire.", 40, 15, [40, 0, 20], TargetType.SINGLE, [Fear.FIRE, Fear.BURNING], [Effect.BURNING, Effect.FIRE, Effect.HOT, Effect.SWELTERING])
 	human_popsicle  = create_power("Human Popsicle", "Target human is frozen in a block of ice.", 40, 15, [40, 0, 20], TargetType.SINGLE, [Fear.FREEZING], [Effect.COLD, Effect.FREEZING, Effect.FROZEN])
+	human_torch  = create_power("Human Torch", "Target human is set on fire.", 40, 15, [40, 0, 20], TargetType.SINGLE, [Fear.BURNING, Fear.FIRE], [Effect.BURNING, Effect.FIRE, Effect.HOT, Effect.SWELTERING])
 	mania = create_power("Mania", "Increases the target's Madness.", 40, 1, [0, 15, 10], TargetType.SINGLE, [], [])
 	paralyze = create_power("Paralyze", "Target human is unable to move.", 50, 15, [25, 5, 15], TargetType.SINGLE, [Fear.TRAPPED], [])
 	snake_attack = create_power("Snake Attack", "A snake briefly appears in front of the target before slithering away.", 30, 10, [15, 5, 0], TargetType.LINE_OF_SIGHT, [Fear.SNAKES], [])
 
 func create_all_ghosts():
-	frosty = create_ghost("Frosty", 10, [Tether.COLD, Tether.WATER])
-	bernie = create_ghost("Bernie", 10, [Tether.ELECTRICAL, Tether.FIRE, Tether.HOT])
-	medusa = create_ghost("Medusa", 10, [Tether.EARTH, Tether.REFLECTIVE])
-	bloody_mary = create_ghost("Bloody Mary", 10, [Tether.BLOOD, Tether.REFLECTIVE])
+	bernie = create_ghost("Bernie", 10, [Tether.ELECTRICAL, Tether.FIRE, Tether.HOT, Tether.WARM])
+	bloody_mary = create_ghost("Bloody Mary", 25, [Tether.BLOOD, Tether.REFLECTIVE])
+	frosty = create_ghost("Frosty", 15, [Tether.COLD, Tether.FROZEN, Tether.WATER])
+	medusa = create_ghost("Medusa", 20, [Tether.EARTH, Tether.REFLECTIVE])
 	
 func add_all_objects_to_locations():
+	add_object_to_location(boiler, basement)
+	add_object_to_location(necronomicon, basement)
+	add_object_to_location(pipes, basement)
+	add_object_to_location(bed, bedroom)
+	add_object_to_location(lamp, bedroom)
 	add_object_to_location(bathtub, first_bathroom)
 	add_object_to_location(mirror, first_bathroom)
 	add_object_to_location(sink, first_bathroom)
 	add_object_to_location(toilet, first_bathroom)
+	add_object_to_location(logs, forest)
+	add_object_to_location(rock, forest)
+	add_object_to_location(tree, forest)
+	add_object_to_location(fridge, kitchen)
+	add_object_to_location(sink, kitchen)
+	add_object_to_location(fireplace, living_room)
+	add_object_to_location(logs, living_room)
+	add_object_to_location(television, living_room)
 	add_object_to_location(bathtub, second_bathroom)
 	add_object_to_location(mirror, second_bathroom)
 	add_object_to_location(sink, second_bathroom)
 	add_object_to_location(toilet, second_bathroom)
-	add_object_to_location(fireplace, living_room)
-	add_object_to_location(logs, living_room)
-	add_object_to_location(television, living_room)
-	add_object_to_location(fridge, kitchen)
-	add_object_to_location(sink, kitchen)
-	add_object_to_location(boiler, basement)
-	add_object_to_location(necronomicon, basement)
-	add_object_to_location(pipes, basement)
-	add_object_to_location(logs, forest)
-	add_object_to_location(rock, forest)
-	add_object_to_location(tree, forest)
 
 func add_all_locations_to_map1():
 	add_location_to_map(first_bathroom, map1)
@@ -255,34 +261,34 @@ func add_allowed_ghost_to_map(ghost:Dictionary, map:Dictionary):
 	map.allowed_ghosts.push_back(ghost)
 
 func add_all_allowed_ghosts_to_map1():
-	add_allowed_ghost_to_map(frosty, map1)
 	add_allowed_ghost_to_map(bernie, map1)
-	add_allowed_ghost_to_map(medusa, map1)
 	add_allowed_ghost_to_map(bloody_mary, map1)
+	add_allowed_ghost_to_map(frosty, map1)
+	add_allowed_ghost_to_map(medusa, map1)
 
 func add_all_powers_to_ghosts():
+	#Bloody Mary
+	add_power_to_ghost(mania, bloody_mary)
+	add_power_to_ghost(brief_reveal, bloody_mary)
+	add_power_to_ghost(gore, bloody_mary)
+	#Bernie
+	add_power_to_ghost(bonfire, bernie)
+	add_power_to_ghost(human_torch, bernie)
 	#Frosty
 	add_power_to_ghost(bitter_cold, frosty)
 	add_power_to_ghost(brief_reveal, frosty)
 	add_power_to_ghost(gore, frosty)
 	add_power_to_ghost(human_popsicle, frosty)
-	#Bernie
-	add_power_to_ghost(bonfire, bernie)
-	add_power_to_ghost(human_torch, bernie)
 	#Medusa
 	add_power_to_ghost(mania, medusa)
 	add_power_to_ghost(paralyze, medusa)
 	add_power_to_ghost(snake_attack, medusa)
-	#Bloody Mary
-	add_power_to_ghost(mania, bloody_mary)
-	add_power_to_ghost(brief_reveal, bloody_mary)
-	add_power_to_ghost(gore, bloody_mary)
 
 func _ready():
 #	Map-related
 	create_all_interactive_objects()
 	create_all_locations()
-	map1 = create_map("The Dead Evil Cabin in the Forest", "It's so evil and so dead and so cabiny and also a forest.", 100, 1200, -1)
+	map1 = create_map("The Dead Evil Cabin in the Forest", "It's so evil and so dead and so cabiny and also a forest.", 100, [1200, 900, 600], -1)
 #	Ghost-related
 	create_all_powers()
 	create_all_ghosts()
