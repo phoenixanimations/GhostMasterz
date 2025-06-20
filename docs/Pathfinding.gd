@@ -70,7 +70,7 @@ var ghosts := []
 var map1
 
 enum Fear {AGING, AIR, BLOOD, BURNING, CORPSE, CREEPYCRAWLY, DARKNESS, DEATH, DIRTY, EMBARRASSMENT, FAILURE, FIRE, FREEZING, GHOST, HEIGHTS, HUNTED, ISOLATION, NEEDLES, NOISE, REJECTION, SNAKES, SUFFERING, TRAPPED, WEAPONS}
-enum Tether {AIR, BLOOD, BURNING, COLD, CORPSE, CREEPY, DARK, DEATH, DIRTY, EARTH, ELECTRICAL, FIRE, FROZEN, HOT, ICE, INSIDE, LIGHT, OUTSIDE, PLASMA, REFLECTIVE, WARM, WATER, WEAPON}
+enum Tether {AIR, BLOOD, BURNING, COLD, CORPSE, CREEPY, DARK, DEATH, DIRTY, EARTH, ELECTRICAL, EMOTIONAL, FIRE, FROZEN, HOT, ICE, INSIDE, LIGHT, MURDER, OUTSIDE, PLASMA, REFLECTIVE, VIOLENCE, WARM, WATER, WEAPON}
 enum Age {CHILD, TEENAGER, ADULT, ELDERLY}
 enum Effect {BLIZZARD, BURNING, COLD, FIRE, FREEZING, FROZEN, HOT, RAIN, SNOW, SWELTERING, TEMPEST, WARM, WINDY}
 enum Gender {CIS_MAN, CIS_WOMAN, NON_BINARY, TRANS_MAN, TRANS_WOMAN}
@@ -94,7 +94,9 @@ func create_location(_name:String, _tethers:Array):
 		object_type = ObjectType.LOCATION,
 		name = _name,
 		interactive_objects = [],
-		characters = [],
+#		In theory, we shouldn't need this list, based on the restructure listed below
+#			this also avoids self-referencial dictionaries and recursion
+#		characters = [],
 		tethers = _tethers
 	}
 	locations.push_back(location)
@@ -109,11 +111,25 @@ func create_location(_name:String, _tethers:Array):
 	#match location to coordinate values within a certain area
 #	pass
 
-func create_character(_name:String, _age:int, _starting_location:Dictionary, _gender:int, _orientation:int, _physical_status:Array, _emotional_status:Array, _fears:Array):
+func create_character(_name:String, _age:int, _base_stats:Array, _maximum_stats:Array, _starting_location:Dictionary, _gender:int, _orientation:int, _physical_status:Array, _emotional_status:Array, _fears:Array):
 	var character := {
 		object_type = ObjectType.CHARACTER,
 		name = _name,
 		age = _age,
+		base_stats = _base_stats,
+		maximum_stats = _maximum_stats,
+		base_willpower = _base_stats[0],
+		base_terror = _base_stats[1],
+		base_madness = _base_stats[2],
+		base_belief = _base_stats[3],
+		willpower = _base_stats[0],
+		terror = _base_stats[1],
+		madness = _base_stats[2],
+		belief = _base_stats[3],
+		maximum_willpower = _maximum_stats[0],
+		maximum_terror = _maximum_stats[1],
+		maximum_madness = _maximum_stats[2],
+		maximum_belief = _maximum_stats[3],
 		starting_location = _starting_location,
 		gender = _gender,
 		orientation = _orientation,
@@ -122,7 +138,8 @@ func create_character(_name:String, _age:int, _starting_location:Dictionary, _ge
 		fears = _fears
 	}
 	characters.push_back(character)
-	add_character_to_starting_location(character)
+#	Grayed out since this will be removed with the restructure
+#	add_character_to_starting_location(character)
 	return character
 	
 func create_power(_name:String, _description:String, _cost:int, _duration:int, _base_stats:Array, _target_type:int, _fears:Array, _effects:Array):
@@ -171,9 +188,10 @@ func add_power_to_ghost(power:Dictionary, ghost:Dictionary):
 func add_location_to_map(location:Dictionary, map:Dictionary):
 	map.locations.push_back(location)
 
-func add_character_to_starting_location(character:Dictionary):
-	var set_location = character.starting_location
-	set_location.characters.push_back(character)
+#Restructuring will remove this function
+#func add_character_to_starting_location(character:Dictionary):
+#	var set_location = character.starting_location
+#	set_location.characters.push_back(character)
 
 func create_all_interactive_objects():
 	bathtub = create_interactive_object("Bathtub", [Tether.WATER])
@@ -193,11 +211,23 @@ func create_all_interactive_objects():
 	tree = create_interactive_object("Tree", [Tether.EARTH])
 
 func create_all_characters():
-	ash = create_character("Ash", Age.ADULT, living_room, Gender.CIS_MAN, Orientation.STRAIGHT, [PhysicalStatus.NORMAL], [EmotionalStatus.CURIOUS], [Fear.SUFFERING, Fear.REJECTION, Fear.CORPSE])
-	cheryl = create_character("Cheryl", Age.ADULT, basement, Gender.NON_BINARY, Orientation.PANSEXUAL, [PhysicalStatus.NORMAL], [EmotionalStatus.CURIOUS, EmotionalStatus.SCARED], [Fear.CREEPYCRAWLY, Fear.CORPSE])
-	linda = create_character("Linda", Age.ADULT, first_bathroom, Gender.CIS_WOMAN, Orientation.STRAIGHT, [PhysicalStatus.WARM], [EmotionalStatus.NORMAL], [Fear.DARKNESS, Fear.DIRTY, Fear.CREEPYCRAWLY, Fear.CORPSE, Fear.DEATH])
-	scott = create_character("Scott", Age.ADULT, bedroom, Gender.TRANS_MAN, Orientation.ASEXUAL, [PhysicalStatus.SLEEPING], [EmotionalStatus.INDIFFERENT], [Fear.DARKNESS, Fear.SUFFERING, Fear.DEATH, Fear.NEEDLES])
-	shelly = create_character("Shelly", Age.ADULT, kitchen, Gender.TRANS_WOMAN, Orientation.BISEXUAL, [PhysicalStatus.COLD], [EmotionalStatus.CONFUSED], [Fear.BLOOD, Fear.DEATH])
+	#willpower, terror, madness, belief
+
+	#willpower dictates when the character has a 'mental breakdown', causing them to stop performing certain actions and try to find safety
+	#terror dictates when the character will attempt to flee the map - some things can prevent them from fleeing (such as possession)
+	#madness dictates when the character will go mad (this allows them to continue performing some actions while also counting as having 'fled' the map)
+	#belief dictates how easily scared the character is (this acts as a modifier to the terror and madness stats)
+
+	#non-believer
+	ash = create_character("Ash", Age.ADULT, [100, 0, 0, 20], [100, 80, 60, 100], living_room, Gender.CIS_MAN, Orientation.STRAIGHT, [PhysicalStatus.NORMAL], [EmotionalStatus.CURIOUS], [Fear.SUFFERING, Fear.REJECTION, Fear.CORPSE])
+	#scaredy, believer
+	cheryl = create_character("Cheryl", Age.ADULT, [80, 0, 0, 90], [100, 80, 60, 100], basement, Gender.NON_BINARY, Orientation.PANSEXUAL, [PhysicalStatus.NORMAL], [EmotionalStatus.CURIOUS, EmotionalStatus.SCARED], [Fear.CREEPYCRAWLY, Fear.CORPSE])
+	#slightly mad
+	linda = create_character("Linda", Age.ADULT, [100, 10, 20, 60], [100, 60, 60, 100], first_bathroom, Gender.CIS_WOMAN, Orientation.STRAIGHT, [PhysicalStatus.WARM], [EmotionalStatus.NORMAL], [Fear.DARKNESS, Fear.DIRTY, Fear.CREEPYCRAWLY, Fear.CORPSE, Fear.DEATH])
+	#generic
+	scott = create_character("Scott", Age.ADULT, [100, 0, 0, 30], [100, 60, 80, 100], bedroom, Gender.TRANS_MAN, Orientation.ASEXUAL, [PhysicalStatus.SLEEPING], [EmotionalStatus.INDIFFERENT], [Fear.DARKNESS, Fear.SUFFERING, Fear.DEATH, Fear.NEEDLES])
+	#generic
+	shelly = create_character("Shelly", Age.ADULT, [100, 0, 10, 60], [100, 60, 60, 100], kitchen, Gender.TRANS_WOMAN, Orientation.BISEXUAL, [PhysicalStatus.COLD], [EmotionalStatus.CONFUSED], [Fear.BLOOD, Fear.DEATH])
 
 func create_all_locations():
 	basement = create_location("Basement", [Tether.CREEPY, Tether.DARK, Tether.INSIDE])
@@ -294,6 +324,7 @@ func _ready():
 	create_all_ghosts()
 #	Character-related (HAS TO OCCUR AFTER MAP CREATION)
 	create_all_characters()
+#	Grayed out since this will be removed in the restructure
 #	add_all_characters_to_starting_locations()
 #	Add all alls
 	add_all_objects_to_locations()
@@ -313,4 +344,6 @@ func _ready():
 						if(ghost.can_tether):
 							print("%s can tether to %s (%s: %s)."% [ghost.name, location.name, interactive_object.name, Tether.keys()[tether]])
 							break
-#				print("Location: %s, Object: %s, Tether: %s" % [location.name, interactive_object.name, Tether.keys()[tether]])
+#	for character in characters:
+#		print(character)
+#		print("Location: %s, Object: %s, Tether: %s" % [location.name, interactive_object.name, Tether.keys()[tether]])
