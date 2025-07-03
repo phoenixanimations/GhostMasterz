@@ -333,17 +333,17 @@ func _ready():
 	add_all_powers_to_ghosts()
 	
 	#For debugging if a ghost can tether to an object with a location
-	for location in map1.locations:
-		for interactive_object in location.interactive_objects:
-			for ghost in ghosts:
-				if(!map1.allowed_ghosts.has(ghost)):
-					continue
-				for tether in interactive_object.tethers:
-					if(ghost.tethers.has(tether)):
-						ghost.can_tether = true
-						if(ghost.can_tether):
-							print("%s can tether to %s (%s: %s)."% [ghost.name, location.name, interactive_object.name, Tether.keys()[tether]])
-							break
-#	for character in characters:
-#		print(character)
-#		print("Location: %s, Object: %s, Tether: %s" % [location.name, interactive_object.name, Tether.keys()[tether]])
+#	for location in map1.locations:
+#		for interactive_object in location.interactive_objects:
+#			for ghost in ghosts:
+#				if(!map1.allowed_ghosts.has(ghost)):
+#					continue
+#				for tether in interactive_object.tethers:
+#					if(ghost.tethers.has(tether)):
+#						ghost.can_tether = true
+#						if(ghost.can_tether):
+#							print("%s can tether to %s (%s: %s)."% [ghost.name, location.name, interactive_object.name, Tether.keys()[tether]])
+#							break
+	for character in characters:
+		print(character)
+#	print("Location: %s, Object: %s, Tether: %s" % [location.name, interactive_object.name, Tether.keys()[tether]])

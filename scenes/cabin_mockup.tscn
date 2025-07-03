@@ -1,41 +1,41 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://prefabs/ui/placeholder_square.png" type="Texture" id=1]
-[ext_resource path="res://prefabs/rts_camera/camera.tscn" type="PackedScene" id=2]
-[ext_resource path="res://prefabs/quit.tscn" type="PackedScene" id=3]
-[ext_resource path="res://prefabs/cabin/cabin.tscn" type="PackedScene" id=4]
-[ext_resource path="res://docs/Pathfinding.gd" type="Script" id=5]
+[ext_resource path="res://tools/camera.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/quit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefabs/ui/placeholder_square.png" type="Texture" id=3]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Camera
+[sub_resource type="SpatialMaterial" id=6]
 
-var RAY_LENGTH = 1000.0
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.635294, 0.635294, 0.635294, 1 )
 
-func _input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
-		var space_state = get_world().direct_space_state
-		var from = project_ray_origin(event.position)
-		var to = from + project_ray_normal(event.position) * RAY_LENGTH
-		var result = space_state.intersect_ray(from, to)
-		if result:
-			return result.collider
-		return null
-"
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 100, 1, 100 )
 
-[node name="Spatial" type="Spatial"]
-script = ExtResource( 5 )
+[sub_resource type="PlaneMesh" id=2]
+size = Vector2( 200, 200 )
 
-[node name="Cabin" parent="." instance=ExtResource( 4 )]
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.431373, 0.192157, 0.0392157, 1 )
 
-[node name="Quit" parent="." instance=ExtResource( 3 )]
+[node name="Cabin" type="Spatial"]
 
-[node name="Camera" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16777, 3.96216, 3.54572 )
-edge_scroll/enabled = false
-movement/speed = 0.4
+[node name="Quit" parent="." instance=ExtResource( 2 )]
 
-[node name="CameraZoom" parent="Camera/CameraTilt" index="0"]
-script = SubResource( 1 )
+[node name="Camera" type="Position3D" parent="."]
+transform = Transform( 0.0323206, -0.805552, 0.591643, 0, 0.591952, 0.805973, -0.999478, -0.0260495, 0.0191322, 16.9288, 112.274, 81.8371 )
+script = ExtResource( 1 )
+move_speed = 100.0
+sprint_speed = 200.0
+zoom_speed = 800.0
+rise_speed = 50.0
+
+[node name="CameraPivot" type="Spatial" parent="Camera"]
+
+[node name="Camera" type="Camera" parent="Camera/CameraPivot"]
+far = 1000.0
+
+[node name="CameraRotation" type="Spatial" parent="Camera"]
 
 [node name="Debug" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
@@ -83,14 +83,14 @@ margin_bottom = 64.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 68.0
@@ -101,14 +101,14 @@ margin_bottom = 132.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 136.0
@@ -119,14 +119,14 @@ margin_bottom = 200.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 204.0
@@ -137,14 +137,14 @@ margin_bottom = 268.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 272.0
@@ -155,14 +155,14 @@ margin_bottom = 336.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 340.0
@@ -173,14 +173,14 @@ margin_bottom = 404.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer6"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 408.0
@@ -191,14 +191,14 @@ margin_bottom = 472.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer7"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
 margin_left = 157.0
@@ -221,14 +221,14 @@ margin_bottom = 64.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 68.0
@@ -239,14 +239,14 @@ margin_bottom = 132.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 136.0
@@ -257,14 +257,14 @@ margin_bottom = 200.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 204.0
@@ -275,14 +275,14 @@ margin_bottom = 268.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 272.0
@@ -293,14 +293,14 @@ margin_bottom = 336.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 340.0
@@ -311,14 +311,14 @@ margin_bottom = 404.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 408.0
@@ -329,14 +329,14 @@ margin_bottom = 472.0
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_right = 64.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
 modulate = Color( 1, 1, 1, 0.588235 )
 margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 64.0
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="Control4" type="Control" parent="VBoxContainer/HBoxContainer"]
 margin_left = 1006.0
@@ -346,4 +346,206 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[editable path="Camera"]
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="LivingRoom1" type="Room" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99, 0, -99 )
+
+[node name="NorthWall" type="CSGBox" parent="Spatial/LivingRoom1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 20, 0 )
+snap = 1.0
+width = 200.0
+height = 40.0
+
+[node name="WestWall" type="CSGBox" parent="Spatial/LivingRoom1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 40 )
+snap = 1.0
+height = 40.0
+depth = 78.0
+
+[node name="EastWall" type="CSGBox" parent="Spatial/LivingRoom1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 198, 20, 40 )
+snap = 1.0
+height = 40.0
+depth = 78.0
+
+[node name="SouthWall" type="CSGBox" parent="Spatial/LivingRoom1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 20, 80 )
+snap = 1.0
+width = 200.0
+height = 40.0
+
+[node name="Toilet2" type="CSGBox" parent="Spatial/LivingRoom1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 29, 41 )
+snap = 1.0
+width = 20.0
+height = 16.0
+depth = 18.0
+
+[node name="LivingRoom2" type="Room" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99, 0, -18 )
+
+[node name="NorthWall" type="CSGBox" parent="Spatial/LivingRoom2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 20, 1 )
+snap = 1.0
+width = 140.0
+height = 40.0
+
+[node name="WestWall1" type="CSGBox" parent="Spatial/LivingRoom2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 29 )
+snap = 1.0
+height = 40.0
+depth = 54.0
+
+[node name="WestWall2" type="CSGBox" parent="Spatial/LivingRoom2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 98, 20, 87 )
+snap = 1.0
+height = 40.0
+depth = 58.0
+
+[node name="EastWall" type="CSGBox" parent="Spatial/LivingRoom2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 138, 20, 59 )
+snap = 1.0
+height = 40.0
+depth = 114.0
+
+[node name="SouthWall1" type="CSGBox" parent="Spatial/LivingRoom2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 20, 57 )
+snap = 1.0
+width = 100.0
+height = 40.0
+
+[node name="SouthWall2" type="CSGBox" parent="Spatial/LivingRoom2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 118, 20, 117 )
+snap = 1.0
+width = 42.0
+height = 40.0
+
+[node name="Bathroom" type="Room" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -99, 0, 40 )
+
+[node name="NorthWall" type="CSGBox" parent="Spatial/Bathroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 20, 1 )
+snap = 1.0
+width = 98.0
+height = 40.0
+
+[node name="WestWall" type="CSGBox" parent="Spatial/Bathroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 30 )
+snap = 1.0
+height = 40.0
+depth = 56.0
+
+[node name="EastWall" type="CSGBox" parent="Spatial/Bathroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 20, 30 )
+snap = 1.0
+height = 40.0
+depth = 56.0
+
+[node name="SouthWall" type="CSGBox" parent="Spatial/Bathroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 20, 59 )
+snap = 1.0
+width = 98.0
+height = 40.0
+
+[node name="Desk2" type="CSGBox" parent="Spatial/Bathroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 8, 14 )
+snap = 1.0
+width = 60.0
+height = 16.0
+depth = 24.0
+
+[node name="Sink" type="CSGBox" parent="Spatial/Bathroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 10, 43 )
+snap = 1.0
+width = 20.0
+height = 20.0
+depth = 24.0
+
+[node name="Toilet" type="CSGBox" parent="Spatial/Bathroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 79, 6, 9 )
+snap = 1.0
+width = 14.0
+height = 12.0
+depth = 14.0
+
+[node name="Mirror" type="CSGBox" parent="Spatial/Bathroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 30, 43 )
+snap = 1.0
+height = 20.0
+depth = 24.0
+material = SubResource( 6 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Spatial/Bathroom/Mirror"]
+transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 1.03836, 0, 0 )
+radius = 8.0
+height = 0.002
+sides = 32
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Spatial/Bathroom/Mirror/CSGCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, 8.35187e-23, 0, 8.35187e-23, 1, -1.52588e-05, 0, 0 )
+extents = Vector3( 8, 0.01, 8 )
+origin_offset = Vector3( 0, 2.23517e-10, 0 )
+
+[node name="Bedroom" type="Room" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0, -17 )
+
+[node name="NorthWall" type="CSGBox" parent="Spatial/Bedroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 20, 0 )
+snap = 1.0
+width = 60.0
+height = 40.0
+
+[node name="WestWall" type="CSGBox" parent="Spatial/Bedroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 58 )
+snap = 1.0
+height = 40.0
+depth = 114.0
+
+[node name="SouthWall" type="CSGBox" parent="Spatial/Bedroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 20, 116 )
+snap = 1.0
+width = 60.0
+height = 40.0
+
+[node name="EastWall" type="CSGBox" parent="Spatial/Bedroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 20, 58 )
+snap = 1.0
+height = 40.0
+depth = 114.0
+
+[node name="Desk" type="CSGBox" parent="Spatial/Bedroom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 8, -13 )
+snap = 1.0
+width = 40.0
+height = 16.0
+depth = 20.0
+
+[node name="TapeRecorder" type="CSGBox" parent="Spatial/Bedroom/Desk"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 5 )
+snap = 1.0
+width = 12.0
+height = 4.0
+depth = 8.0
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Spatial/Bedroom/Desk/TapeRecorder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.44106, 0 )
+radius = 2.0
+height = 0.5
+material = SubResource( 4 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Spatial/Bedroom/Desk/TapeRecorder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.44106, 0 )
+radius = 2.0
+height = 0.5
+material = SubResource( 4 )
+
+[node name="Ground" type="Area" parent="Spatial"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Ground"]
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Spatial/Ground/CollisionShape"]
+snap = 1.0
+mesh = SubResource( 2 )
+material = SubResource( 3 )
